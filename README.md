@@ -1,4 +1,0 @@
-school
-======
-
-Open Sourced education.
