@@ -1,0 +1,152 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+
+\DeclareSIUnit\Molar{\textsc{m}}
+
+\title{Amount of Transmitted Light Relative to the Concentration of a Solution}
+\date{22 September 2014}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+    \noindent\textbf{Purpose:} Understand how relative concentration of a solution
+    in water can affect its transmittance and absorbance. \\\\
+    \section{Data}
+        \noindent\resizebox{\textwidth}{!}{
+            \begin{tabular}{|l||c|c|c|c|} \hline
+                Solution & Dilution Ratio \(\frac{\si\ml\ stock}{\si\ml\ water}\) & Molar Concentration \si{\micro\Molar} & Measured Percent Transmittance & Measured \(\%T\) in Decimal Form \\ \hline\hline
+                1. (stock solution) & \(\SI{10}{\ml}/\SI{0}{\ml}\) & \(1.7\cdot10^{1}\)\si{\micro\Molar} & 0.753 & 0.177 \\ \hline
+                2. & \(\SI{8}{\ml}/\SI{2}{\ml}\) & \(1.4\cdot10^{1}\)\si{\micro\Molar} & 0.577 & 0.265 \\ \hline
+                3. & \(\SI{6}{\ml}/\SI{4}{\ml}\) & \(1.0\cdot10^{1}\)\si{\micro\Molar} & 0.450 & 0.355 \\ \hline
+                4. & \(\SI{4}{\ml}/\SI{6}{\ml}\) & \(6.8\cdot10^{0}\)\si{\micro\Molar} & 0.281 & 0.524 \\ \hline
+                5. & \(\SI{3}{\ml}/\SI{7}{\ml}\) & \(5.1\cdot10^{0}\)\si{\micro\Molar} & 0.198 & 0.634 \\ \hline
+                6. & \(\SI{2}{\ml}/\SI{8}{\ml}\) & \(3.4\cdot10^{0}\)\si{\micro\Molar} & 0.176 & 0.667 \\ \hline
+                7. & \(\SI{1}{\ml}/\SI{9}{\ml}\) & \(1.7\cdot10^{0}\)\si{\micro\Molar} & 0.074 & 0.84 \\ \hline
+                8. & \(\SI{0}{\ml}/\SI{10}{\ml}\) & \(0.0\cdot10^{0}\)\si{\micro\Molar} & 0.000 & 1.000 \\ \hline\hline
+                Glacier Freeze & \(\SI{3.35}{\ml}/\SI{6.65}{\ml}\) & \(5.7\cdot10^{0}\)\si{\micro\Molar} & 0.247 & 0.566 \\ \hline
+                Cool Blue & \(\SI{8.82}{\ml}/\SI{1.18}{\ml}\) & \(1.5\cdot10^{1}\)\si{\micro\Molar} & 0.671 & 0.213 \\ \hline
+                Berry & \(\SI{20.1}{ml}/\SI{-10.1}{\ml}\) & \(3.4\cdot10^{1}\)\si{\micro\Molar} & 1.476 & 0.03342 \\ \hline
+            \end{tabular}
+        }\\\\
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Transmittance Relative to Concentration of Brilliant Blue in a Solution},
+                xlabel={Molarity [\si{\micro\Molar}]},
+                ylabel={Measured Transmittance},
+                xmin=0.00, xmax=20.0,
+                ymin=0.00, ymax=1.00,
+                xtick={17, 14, 10, 6.8, 5.1, 3.4, 1.7, 0.0},
+                ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+                ]
+                \addplot coordinates{
+                (17, 0.753)
+                (14, 0.577)
+                (10, 0.450)
+                (6.8, 0.281)
+                (5.1, 0.198)
+                (3.4, 0.176)
+                (1.7, 0.074)
+                (0.0, 0.000)
+                };
+                \addplot[
+                color=red,
+                domain=0:20,
+                mark=none
+                ] {0.0431*x + 0.000953};
+                \addlegendentry{Brilliant Blue Transmittance}
+                \addlegendentry{\(0.0431\si{\micro\Molar}+0.000953\)}
+            \end{axis}
+        \end{tikzpicture} \\\\
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Transmittance Relative to Concentration of Brilliant Blue in Gatorade},
+                xlabel={Molarity [\si{\micro\Molar}]},
+                ylabel={Measured Transmittance},
+                xmin=0.00, xmax=35.0,
+                ymin=0.00, ymax=1.50,
+                xtick={34, 15, 5.7},
+                ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00, 1.10, 1.20, 1.30, 1.40, 1.50},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+                ]
+                \addplot coordinates {
+                (17, 0.753)
+                (14, 0.577)
+                (10, 0.450)
+                (6.8, 0.281)
+                (5.1, 0.198)
+                (3.4, 0.176)
+                (1.7, 0.074)
+                (0.0, 0.000)
+                };
+                \addplot[
+                color=green,
+                domain=0:35,
+                mark=square*,
+                only marks
+                ] coordinates {
+                (5.7, 0.247)
+                (15, 0.671)
+                (34, 1.476)
+                };
+                \addplot[
+                color=red,
+                domain=0:35,
+                mark=none
+                ] {0.0431*x + 0.000953};
+                \addlegendentry{Brilliant Blue Transmittance}
+                \addlegendentry{Gatorade Transmittance}
+                \addlegendentry{\(0.0431\si{\micro\Molar}+0.000953\)}
+            \end{axis}
+        \end{tikzpicture} \\\\
+
+        Note the Gatorade is in order (from left to right):
+        \begin{itemize}
+            \item Glacier Freeze
+            \item Cool Blue
+            \item Berry
+        \end{itemize}
+
+    \section{Calculations}
+        \begin{itemize}
+            \item Molar Concentration for First Dilution \((M_{1}V_{1} = M_{2}V_{2})\): \\
+            \[(1.7\cdot10^{1}\si{\micro\Molar})\cdot\SI{8}{\ml} = (x\si{\micro\Molar})\cdot\SI{10}{\ml}\]
+            \[x = \frac{(1.7\cdot10^{1}\si{\micro\Molar})\cdot\SI{8}{\ml}}{\SI{10}{\ml}} = 1.4\cdot10^{1}\si{\micro\Molar}\]
+            \item Percent Transmittance for Stock Solution \((\%T = 10^{-A})\) \\
+            \[(\%T) = 10^{-0.753} = 0.177\to17.7\%\]
+        \end{itemize}
+
+    \section{Questions}
+        \begin{enumerate}
+            \item Suppose a solution was too concentrated for an accurate reading
+            with the spectrophotometer. The concentrated solution was diluted
+            by placing \SI{1.00}{\ml} of the concentrated solution into
+            \SI{4.00}{\ml} of water. The solution was then placed in the
+            spectrophotometer, an absorbance was obtained, and after a few
+            calculations the molar concentration was calculated to be
+            \(3.5\cdot10^{-6}\si\Molar\). What was the concentration of the
+            original stock solution before dilution? \\\\
+            \[(\si\Molar) = \frac{(3.5\cdot10^{-6}\si\Molar)\cdot\SI{5.00}{\ml}}{\SI{1.00}{\ml}} = 1.8\cdot10^{-5}\si\Molar\]
+            \item If a \SI{0.10}{\Molar} solution of a colored substance has a
+            maximum absorbance at \SI{500}{\nm} and an absorbance of 0.26
+            at this wavelength, what will be the measured absorbance of a
+            \SI{0.20}{\Molar} solution at \SI{500}{\nm}? \\\\
+            \[(A) = \frac{\SI{0.20}{\Molar}}{\SI{0.10}{\Molar}}\cdot0.26 = 0.52\]
+            \item The spectrophotometer really measures the percent of light
+            that is transmitted through the solution. The instrument then converts
+            \(\%T\) (transmittance) into absorbance by using the equation you
+            determined in the prelab section. If the absorbance of a sample is
+            0.85, what is the percent light transmitted through the colored
+            sample at this collected wavelength?
+            \[(A) = -\log{(T)}\]
+            \[(T) = 10^{-(A)}\to10^{-0.85} = 0.14\to14\%\]
+        \end{enumerate}
+\end{document}
