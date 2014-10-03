@@ -1,7 +1,6 @@
 \documentclass{article}
 
 \usepackage{amsmath}
-\usepackage{graphicx}
 \usepackage{pgfplots}
 \usepackage{siunitx}
 
@@ -16,7 +15,7 @@
     \noindent\textbf{Purpose:} Understand how relative concentration of a solution
     in water can affect its transmittance and absorbance. \\\\
     \section{Data}
-        \noindent\resizebox{1.25\textwidth}{0.25\textheight}{
+        \noindent\resizebox{\textwidth}{!}{
         	\Huge
             \begin{tabular}{|l||c|c|c|c|} \hline
                 Solution & Dilution Ratio \(\frac{\si\ml\ stock}{\si\ml\ water}\) & Molar Concentration \si{\micro\Molar} & Measured Percent Transmittance & Measured \(\%T\) in Decimal Form \\ \hline\hline
@@ -69,17 +68,17 @@
 
         \begin{tikzpicture}
             \begin{axis}[
-           	scale=1.25,
-            title={Transmittance Relative to Concentration of Brilliant Blue in Gatorade},
-            xlabel={Molarity [\si{\micro\Molar}]},
-            ylabel={Measured Transmittance},
-            xmin=0.00, xmax=35.0,
-            ymin=0.00, ymax=1.50,
-            xtick={34, 15, 5.7},
-            ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00, 1.10, 1.20, 1.30, 1.40, 1.50},
-            legend pos=north west,
-            ymajorgrids=true,
-            grid style=dashed
+               	scale=1.25,
+                title={Transmittance Relative to Concentration of Brilliant Blue in Gatorade},
+                xlabel={Molarity [\si{\micro\Molar}]},
+                ylabel={Measured Transmittance},
+                xmin=0.00, xmax=35.0,
+                ymin=0.00, ymax=1.50,
+                xtick={34, 15, 5.7},
+                ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00, 1.10, 1.20, 1.30, 1.40, 1.50},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
             ]
                 \addplot coordinates {
                 (17, 0.753)
