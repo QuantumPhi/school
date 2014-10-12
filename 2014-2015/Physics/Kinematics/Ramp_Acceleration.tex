@@ -22,6 +22,9 @@
 \begin{document}
     \maketitle
     \section{Introduction}
+        The goal of this lab was to determine the effect of ramp incline on the
+        acceleration of a cart. I predict that as ramp incline increases, acceleration
+        of the cart will increase linearly.
     \section{Materials}
         \begin{enumerate}
             \item 1 Cart
@@ -131,4 +134,15 @@
                 \addlegendentry{0.171249x-0.0575874}
             \end{axis}
         \end{tikzpicture}
+    \section{Analysis}
+        The collected data was remarkably consistent with the linear approximation
+        of the acceleration, with an \(R^{2}\) value of \(0.998\). However, there
+        is one error with the data: the acceleration is predicted to be zero when
+        the angle of the ramp is \(0.3363\degree\), when the expected value would
+        be \(0\degree\). This could be caused by human error at cart launch (pushing
+        the cart forward at launch), of which there were many during data collection,
+        requiring that we repeated some trials. Obviously not all errors were
+        corrected, but this is expected with human uncertainty in data collection.
+        The simple fact is, however, that acceleration increases as ramp incline
+        increases, which supports my prediction.
 \end{document}
