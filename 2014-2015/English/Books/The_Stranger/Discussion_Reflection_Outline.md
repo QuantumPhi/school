@@ -20,3 +20,8 @@
 |'colons' (`=>`'pied noir') dominated Algerian administration|
 |'grands colons' (`=>`'colon') controlled most of Algerian wealth|
 |Europeans controlled 30% of arable land|
+
+|Miscellaneous|
+|-----|
+|Meursault not on trial for murder`=>`on trial for not being a Catholic, 'not loving his mother'|
+|Chaplain/Magistrate absurd`=>`'Catholicism is the right belief' in the midst of a country of Muslims|
