@@ -10,7 +10,7 @@
 \date{3 October 2014}
 \author{Tarik Onalan}
 
-\begin{filecontents}{data_accel.dat}
+\begin{filecontents}{data.dat}
     xVal   yVal     xDel  yDel
     0.6016 0.034414 0.075 0.003536
     1.249  0.1666   0.075 0.0019
@@ -97,13 +97,13 @@
                     y=yVal,
                     x error=xDel,
                     y error=yDel
-                ]{data_accel.dat};
+                ]{data.dat};
 
                 \addplot[
                     color=red,
-                    domain=0:4,
-                    mark=none
-                ] {0.171249*x-0.0575874};
+                    mark=none,
+                    domain=0:4
+                ]{0.171249*x-0.0575874};
 
                 \draw[
                     red,

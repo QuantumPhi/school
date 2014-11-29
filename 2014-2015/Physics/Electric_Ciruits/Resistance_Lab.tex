@@ -1,0 +1,246 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{circuitikz}
+\usepackage{csvsimple}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+
+\title{Analyzing Circuit Resistance with Various Lengths of Nichrome Wire}
+\date{1 December 2014}
+\author{Tarik Onalan}
+
+\def\mean#1{\left< #1 \right>}
+\def\abs#1{\left| #1 \right|}
+\numberwithin{equation}{subsection}
+
+\begin{filecontents}{data.dat}
+    Len  Len_Inv T_1   T_2   T_3   T_4   T_5   Avg   Err   Len_Err
+    12.2 0.0820  0.620 0.621 0.619 0.622 0.622 0.621 0.002 0.05
+    18.6 0.0538  0.406 0.430 0.423 0.422 0.423 0.421 0.017 0.05
+    31.6 0.0316  0.232 0.231 0.229 0.234 0.233 0.232 0.003 0.05
+    42.8 0.0234  0.210 0.208 0.206 0.206 0.208 0.208 0.002 0.05
+    48.6 0.0206  0.182 0.181 0.180 0.179 0.181 0.181 0.002 0.05
+\end{filecontents}
+
+\begin{document}
+    \maketitle
+    \section{Introduction}
+        \textbf{How does the length of nichrome wire in a circuit affect the current
+        of the circuit?}\\
+        The goal of this lab was to analyze how varying lengths of a resistor, nichrome
+        wire, affected current flow in a circuit. My hypothesis is that as resistor
+        length increases, current flow within the circuit will decrease, as the more
+        resistance there is in a circuit, the lower the current will be. For the experiment,
+        increasing lengths of nichrome wire will be inserted into a circuit; if the
+        current in the circuit decreases as the length of the nichrome wire increases,
+        my hypothesis will be validated. The manipulated and responding variables are
+        the length of the nichrome wire and the current through the circuit, respectively.
+        The controlled variables are the battery used (for power level), the voltage of
+        the battery, the length of the low-resistance wire, the ammeter used, and the
+        sensitivity setting used on the ammeter.
+
+    \section{Materials}
+        \begin{itemize}
+            \item 1 Ammeter
+            \item 1 Battery
+            \item 1 Section of Low-Resistance Wire
+            \item 5 Sections of Nichrome Wire (Varying lengths)
+        \end{itemize}
+
+    \section{Procedure}
+        \begin{enumerate}
+            \item Set up ammeter with battery and low-resistance wire:
+            \begin{itemize}
+                \item Positive terminal of battery connected to positive terminal
+                    of ammeter
+                \item Negative terminal of battery connected to negative terminal
+                    of ammeter
+                \item Low-resistance wire attached to one of two terminals, other
+                    terminal reserved for nichrome wire
+                \begin{itemize}
+                    \item Note: Use \SI{1}{\A} sensitivity instead of \SI{5}{\A}
+                        sensitivity
+                \end{itemize}
+            \end{itemize}
+            \item Attach ends of nichrome wire to open terminals of battery and ammeter
+            \begin{itemize}
+                \item For simplicity, start with the shortest length of nichrome wire
+            \end{itemize}
+            \item Record amperage shown on ammeter
+            \item Repeat steps 2-3 as necessary for data averaging
+            \item Repeat steps 2-4 with increasing nichrome wire lengths
+        \end{enumerate}
+
+    \section{Diagram}
+        \begin{circuitikz}
+            \draw
+                (0,0) to [battery]  (0,4)
+                      to [ammeter]  (4,4) -- (4,0)
+                      to [vR] (0,0)
+                ;
+        \end{circuitikz}
+
+    \section{Data}
+        \begin{tabular}{|c|||c|c|c|c|c||c|}
+            \hline
+            \bfseries Length & \bfseries Trial 1 & \bfseries Trial 2 & \bfseries Trial 3 & \bfseries Trial 4 & \bfseries Trial 5 & \bfseries Average
+            \\\hline
+            \SI{12.2}{\cm} & \SI{0.620}{\A} & \SI{0.621}{\A} & \SI{0.619}{\A} & \SI{0.622}{\A} & \SI{0.622}{\A} & \SI{0.621}{\A}
+            \\\hline
+            \SI{18.6}{\cm} & \SI{0.406}{\A} & \SI{0.430}{\A} & \SI{0.423}{\A} & \SI{0.422}{\A} & \SI{0.423}{\A} & \SI{0.421}{\A}
+            \\\hline
+            \SI{31.6}{\cm} & \SI{0.232}{\A} & \SI{0.231}{\A} & \SI{0.229}{\A} & \SI{0.234}{\A} & \SI{0.233}{\A} & \SI{0.232}{\A}
+            \\\hline
+            \SI{42.8}{\cm} & \SI{0.210}{\A} & \SI{0.208}{\A} & \SI{0.206}{\A} & \SI{0.206}{\A} & \SI{0.208}{\A} & \SI{0.208}{\A}
+            \\\hline
+            \SI{48.6}{\cm} & \SI{0.182}{\A} & \SI{0.181}{\A} & \SI{0.180}{\A} & \SI{0.179}{\A} & \SI{0.181}{\A} & \SI{0.181}{\A}
+            \\\hline
+        \end{tabular}
+        \\
+        \begin{tabular}{|c|c|}
+            \hline
+            \bfseries Length Error & \bfseries Amperage Error
+            \\\hline
+            0.05 & 0.002
+            \\\hline
+            --- & 0.017
+            \\\hline
+            --- & 0.003
+            \\\hline
+            --- & 0.002
+            \\\hline
+            --- & 0.002
+            \\\hline
+        \end{tabular}
+        \\
+        \begin{tikzpicture}[trim axis left, trim axis right]
+            \begin{axis}[
+                scale=1.75,
+                title={Current Relative to Resistor Length},
+                xlabel={Length [\si{\cm}]},
+                ylabel={Current [\si{\A}]},
+                xmin=0.0, xmax=50.0,
+                ymin=0.0, ymax=0.7,
+                legend pos=north east,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot[
+                    color=blue,
+                    mark=*,
+                    only marks
+                ] plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit
+                ] table [
+                    x=Len,
+                    y=Avg,
+                    x error=Len_Err,
+                    y error=Err
+                ]{data.dat};
+
+                \addplot[
+                    color=red,
+                    mark=none,
+                    domain=0:50
+                ]{6.28197/x^0.926264};
+
+                \addlegendentry{Average}
+                \addlegendentry{\(6.28197x^{-0.926264}\)}
+            \end{axis}
+        \end{tikzpicture}
+        \\
+        \begin{tikzpicture}
+            \begin{axis}[
+                scale=1.75,
+                title={Current Relative to Inverse of Resistor Length},
+                xlabel={\(\frac{1}{Length [\si{\cm}]}\)},
+                ylabel={Current [\si{\A}]},
+                xmin=0.0, xmax=0.1,
+                ymin=0.0, ymax=0.7,
+                x dir=reverse,
+                legend pos=north east,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot[
+                    color=blue,
+                    mark=*,
+                    only marks
+                ] plot [
+                    error bars/.cd,
+                    x dir=both,
+                    y dir=both,
+                    x explicit,
+                    y explicit
+                ] table [
+                    x=Len_Inv,
+                    y=Avg,
+                    y error=Err
+                ]{data.dat};
+
+                \addplot[
+                    color=red,
+                    mark=none,
+                    domain=0:0.1
+                ]{7.2379*x+0.0265815};
+
+                \addlegendentry{Average}
+                \addlegendentry{\(7.2379x+0.0265815\)}
+            \end{axis}
+        \end{tikzpicture}
+
+        \section{Calculations}
+            \centerline{For below calculations, \(t_{i}=t_{1}\)}
+            \subsection{Average}
+                \begin{equation} \label{eq:avg}
+                    t_{avg}=\mean{t_{i}}
+                \end{equation}
+                \centerline{where \(t_{i}\) is the set of results for wire \(i\).
+                Therefore,}
+                \begin{equation}
+                    t_{avg}=\mean{[0.620,0.621,0.619,0.622,0.622]}=0.621
+                \end{equation}
+
+            \subsection{Error}
+                \begin{equation} \label{eq:err}
+                    t_{err}=\pm\abs{t_{avg}-t_{E}}
+                \end{equation}
+                \centerline{where \(t_{E}\) is the element of set \(t_{i}\) with
+                the highest deviation from \(t_{avg}\). Therefore,}
+                \begin{equation}
+                    t_{err}=0.621-0.619=\pm0.002
+                \end{equation}
+
+        \section{Conclusion}
+            It can be observed through the data that the current through the example
+            circuit decreased as the length of the nichrome wire increased. When
+            the nichrome wire was \SI{12.2}{\cm} long, the average current was
+            \SI{0.621}{\A}. However, when the length increased to \SI{18.6}{\cm},
+            the current decreased to \SI{0.421}{\A} This was to be expected, as we
+            observed through tests with bulbs that as bulbs were added to the circuit,
+            resistance increased, lowering the current of the circuit. In this case,
+            however, bulbs are replaced by nichrome wire, and the number of bulbs
+            is analogous to the length of the wire. The graphs show the inverse
+            relationship between resistor length and current; the best-fit graph
+            is nearly equivalent to an inverse function: \(y=ax^{-1}\) and
+            \(y=6.28197x^{-0.926264}\). This validates my prediction that current
+            would decrease as resistance increased.\\
+            One of the major difficulties with the lab was getting an accurate length
+            for the nichrome wire. As our group used longer lengths of wire, the wire
+            curved more, making accurate measurement of its length more difficult. This
+            is slightly reflected in the graph, with more deviation from the best-fit
+            line as the length of the wire increased.\\
+            The goal of this lab is to understand how resistance affects current flow
+            in a circuit. Noting that, the length of nichrome wire in a circuit seems
+            less important. Instead, the effective \textit{resistance} of the wire
+            seems more important. So instead of using resistors of inconsistent resistance,
+            it would be simpler to use resistors of constant resistance, and simply
+            add more resistors in series to increase the resistance. This would remove
+            the variable of the length of the wire, removing a source of possible error.
+\end{document}
