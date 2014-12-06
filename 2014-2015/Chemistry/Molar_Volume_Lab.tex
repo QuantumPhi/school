@@ -1,0 +1,94 @@
+\documentclass{article}
+
+\usepackage[version=3]{mhchem}
+\usepackage{siunitx}
+
+\DeclareSIUnit\atm{atm}
+\DeclareSIUnit\molm{\g\per\mol}
+\DeclareSIUnit\mvol{\L\per\mol}
+\DeclareSIUnit\dens{\g\per\L}
+
+\sisetup{per-mode=fraction}
+
+\def\abs#1{\left| #1 \right|}
+
+\title{Determining the Molar Volume of a Gas}
+\date{8 December 2014}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+    \begin{enumerate}
+        \item Calculate the theoretical number of moles of hydrogen gas produced:\\
+            \[P_{total}=P_{H_{2}}+P_{H_{2}O}\]
+            \[\SI{766.6}{\mmHg}=P_{H_{2}}+\SI{19.8}{\mmHg}\]
+            \[P_{H_{2}}=\SI{746.8}{\mmHg}\]
+            \[PV=nRT\]
+            \[\SI{746.8}{\mmHg} \cdot \SI{49.4}{\mL}=n \cdot \SI{62363.8}
+                {\ml\mmHg\per\mol\per\K}\cdot\SI{295}{\K}\]
+            \[n=2.01 \cdot 10^{-3}\si{\mol}\]
+        \item Find the vapor pressure of water at the temperature of the water bath
+            in this experiment. Calculate the partial pressure of hydrogen gas produced:\\
+            \[P_{total}=P_{H_{2}}+P_{H_{2}O}\]
+            \[\SI{766.6}{\mmHg}=P_{H_{2}}+\SI{19.8}{\mmHg}\]
+            \[P_{H_{2}}=\SI{746.8}{\mmHg}\]
+        \item Use the combined gas law to convert the measured volume of hydrogen to
+            the ideal volume the hydrogen gas would occupy at STP:
+            \[\frac{P_{1} \cdot V_{1}}{T_{1}} = \frac{P_{2} \cdot V_{2}}{T_{2}}\]
+            \[\frac{\SI{1.009}{\atm} \cdot \SI{49.4}{\ml}}{\SI{295}{\K}}=
+                \frac{\SI{1}{\atm} \cdot V_{2}}{\SI{295}{\K}}\]
+            \[V_{2}=\SI{49.8}{\ml}\]
+        \item Divide the volume of hydrogen gas at STP by the theoretical number
+            of moles of hydrogen to calculate the molar volume of hydrogen:
+            \[V_{mol}=\frac{V_{2}}{n} \to \SI{24.6}{\mvol}\]
+        \item Calculate the percent error in your experimental determination of
+            the molar volume of hydrogen:
+            \[\delta_{V_{mol}}=\frac{\abs{V_{mol}-\SI{22.4}{\mvol}}}
+                {\SI{22.4}{\mvol}} \cdot 100\% \to 9.82\%\]
+        \item Calculate the density of hydrogen gas and determine the percent error
+            of your measurements:\\
+            \[mol_{V}=V^{-1}_{mol} \to 0.0407\]
+            \[\rho=mol_{V} \cdot \SI{2.02}{\molm} \to \SI{0.0822}{\dens}\]
+            \[\delta_{\rho}=\frac{\abs{\rho-\SI{0.0899}{\dens}}}{\SI{0.0899}{\dens}}
+                \cdot 100\% \to 8.57\%\]
+        \item If a bubble leaked into the eudiometer during the experiment, what effect
+            would the bubble have on the measured volume of hydrogen gas, and would
+            the calculated molar volume of hydrogen be too high or too low as a result:\\
+            The measured volume of hydrogen gas would be higher, meaning that the molar
+            volume of hydrogen would also seem higher. This would occur because the
+            molar volume of hydrogen has a direct relationship with the measured volume
+            of hydrogen, meaning that if the measured volume of hydrogen increases,
+            the molar volume of hydrogen also increases.
+        \item If the magnesium ribbon was oxidized before the experiment, what effect
+            would that have on the measured volume of hydrogen gas, and would the
+            calculated molar volume of hydrogen be too high or too low as a result:\\
+            The measured volume of hydrogen gas would be lower, meaning that the molar
+            volume of hydrogen would also seem lower. This would occur because magnesium
+            which would have otherwise reacted with the \ce{HCl} would react with
+            oxygen in the air, creating a dull coating of \ce{MgO} on the magnesium
+            strip. The reaction between \ce{MgO} and \ce{HCl} would then produce
+            \ce{MgCl2} and \ce{H2O}, not \ce{MgCl2} and \ce{H2} as the reaction between
+            \ce{Mg} and \ce{HCl} would. The molar volume, which has a direct relationship
+            with the measured volume, would then decrease, because the measured volume
+            of hydrogen would be lower.
+    \end{enumerate}
+    \centerline {
+        \begin{tabular}{|c|c|}
+            \hline
+            \bfseries{Question} & \bfseries{Response}
+            \\\hline
+            1 & \(2.01 \cdot 10^{-3}\si{\mol}\)
+            \\\hline
+            2 & \(P_{H_{2}}=\SI{746.8}{\mmHg}\)
+            \\\hline
+            3 & \(V_{2}=\SI{49.8}{\ml}\)
+            \\\hline
+            4 & \(V_{mol}=\SI{24.6}{\mvol}\)
+            \\\hline
+            5 & \(\delta_{V_{mol}}=9.82\%\)
+            \\\hline
+            6 & \(\delta_{\rho}=8.57\%\)
+            \\\hline
+        \end{tabular}
+    }
+\end{document}

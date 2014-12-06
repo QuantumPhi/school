@@ -112,5 +112,6 @@ sympy-plots-for-*.tex/
 # xindy
 *.xdy
 
+## Cache Files
 *.dat
 *~
