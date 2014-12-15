@@ -83,7 +83,7 @@
                 ymajorgrids=true,
                 grid style=dashed
             ]
-                \addplot[
+                \addplot [
                     color=blue,
                     mark=*,
                 ] plot [
@@ -99,33 +99,33 @@
                     y error=yDel
                 ]{data.dat};
 
-                \addplot[
+                \addplot [
                     color=red,
                     mark=none,
                     domain=0:4
                 ]{0.171249*x-0.0575874};
 
-                \draw[
+                \draw [
                     red,
                     thin
                 ] (axis cs:0.5266,0.030878) rectangle (axis cs:0.6766,0.03795);
 
-                \draw[
+                \draw [
                     red,
                     thin
                 ] (axis cs:1.174,0.1647) rectangle (axis cs:1.324,0.1685);
 
-                \draw[
+                \draw [
                     red,
                     thin
                 ] (axis cs:1.982,0.2935) rectangle (axis cs:2.132,0.31278);
 
-                \draw[
+                \draw [
                     red,
                     thin
                 ] (axis cs:2.906,0.4411) rectangle (axis cs:3.056,0.4507);
 
-                \draw[
+                \draw [
                     red,
                     thin
                 ] (axis cs:3.675,0.57902) rectangle (axis cs:3.825,0.5887);
