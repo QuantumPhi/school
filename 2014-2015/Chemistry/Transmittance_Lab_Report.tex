@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 
 \usepackage{pgfplots}
 \usepackage{siunitx}
@@ -33,32 +33,32 @@
         }\\\\\\
         \begin{tikzpicture}
             \begin{axis}[
-           	scale=1.25,
-            title={Transmittance Relative to Concentration of Brilliant Blue in a Solution},
-            xlabel={Molarity [\si{\micro\Molar}]},
-            ylabel={Measured Transmittance},
-            xmin=0.00, xmax=20.0,
-            ymin=0.00, ymax=1.00,
-            xtick={17, 14, 10, 6.8, 5.1, 3.4, 1.7, 0.0},
-            ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00},
-            legend pos=north west,
-            ymajorgrids=true,
-            grid style=dashed
+                scale=1.25,
+                title={Transmittance Relative to Concentration of Brilliant Blue in a Solution},
+                xlabel={Molarity [\si{\micro\Molar}]},
+                ylabel={Measured Transmittance},
+                xmin=0.00, xmax=20.0,
+                ymin=0.00, ymax=1.00,
+                xtick={17, 14, 10, 6.8, 5.1, 3.4, 1.7, 0.0},
+                ytick={0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 0.90, 1.00},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
             ]
                 \addplot coordinates{
-                (17, 0.753)
-                (14, 0.577)
-                (10, 0.450)
-                (6.8, 0.281)
-                (5.1, 0.198)
-                (3.4, 0.176)
-                (1.7, 0.074)
-                (0.0, 0.000)
+                    (17, 0.753)
+                    (14, 0.577)
+                    (10, 0.450)
+                    (6.8, 0.281)
+                    (5.1, 0.198)
+                    (3.4, 0.176)
+                    (1.7, 0.074)
+                    (0.0, 0.000)
                 };
                 \addplot[
-                color=red,
-                domain=0:20,
-                mark=none
+                    color=red,
+                    domain=0:20,
+                    mark=none
                 ] {0.0431*x + 0.000953};
                 \addlegendentry{Brilliant Blue Transmittance}
                 \addlegendentry{\(0.0431\si{\micro\Molar}+0.000953\)}
@@ -80,29 +80,29 @@
                 grid style=dashed
             ]
                 \addplot coordinates {
-                (17, 0.753)
-                (14, 0.577)
-                (10, 0.450)
-                (6.8, 0.281)
-                (5.1, 0.198)
-                (3.4, 0.176)
-                (1.7, 0.074)
-                (0.0, 0.000)
+                    (17, 0.753)
+                    (14, 0.577)
+                    (10, 0.450)
+                    (6.8, 0.281)
+                    (5.1, 0.198)
+                    (3.4, 0.176)
+                    (1.7, 0.074)
+                    (0.0, 0.000)
                 };
                 \addplot[
-                color=green,
-                domain=0:35,
-                mark=square*,
-                only marks
+                    color=green,
+                    domain=0:35,
+                    mark=square*,
+                    only marks
                 ] coordinates {
-                (5.7, 0.247)
-                (15, 0.671)
-                (34, 1.476)
+                    (5.7, 0.247)
+                    (15, 0.671)
+                    (34, 1.476)
                 };
                 \addplot[
-                color=red,
-                domain=0:35,
-                mark=none
+                    color=red,
+                    domain=0:35,
+                    mark=none
                 ] {0.0431*x + 0.000953};
                 \addlegendentry{Brilliant Blue Transmittance}
                 \addlegendentry{Gatorade Transmittance}

@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper]{article}
 
 \usepackage{array}
 \usepackage{gensymb}
@@ -47,8 +47,6 @@
             \item Record average acceleration for the cart
             \item Repeat steps 2-7, iterating the book count (\(1\to5\))
         \end{enumerate}
-    \section{Diagram}
-        \includegraphics[width=\textwidth]{diagram}
     \section{Data}
         \noindent\resizebox{\textwidth}{!}{
             \Huge
@@ -85,7 +83,7 @@
             ]
                 \addplot [
                     color=blue,
-                    mark=*,
+                    mark=*
                 ] plot [
                     error bars/.cd,
                         x dir=both,

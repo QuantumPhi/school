@@ -1,0 +1,265 @@
+\documentclass[a4paper]{article}
+
+\usepackage{gensymb}
+\usepackage[version=3]{mhchem}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+
+\def\mean#1{\left< #1 \right>}
+\sisetup{per-mode=fraction}
+\DeclareSIUnit\Molar{\textsc{m}}
+
+\title{Analyzing Rate of Decomposition of \ce{NaBO3} in Changing Molarities of \ce{HCl}}
+\date{16 January 2015}
+\author{Tarik Onalan}
+
+\begin{filecontents}{avg.dat}
+    x    y    xun  yun
+    1.0  377  0.025 10
+    0.75 375  0.025 10
+    0.50 372  0.025 10
+\end{filecontents}
+
+\begin{filecontents}{t_1.dat}
+    x    y   xun  yun
+    1.0  381 0.025 10
+    0.75 339 0.025 10
+    0.50 323 0.025 10
+\end{filecontents}
+
+\begin{filecontents}{t_2.dat}
+    x    y   xun  yun
+    1.0  373 0.025 10
+    0.75 369 0.025 10
+    0.50 429 0.025 10
+\end{filecontents}
+
+\begin{filecontents}{t_3.dat}
+    x    y   xun  yun
+    1.0  377 0.025 10
+    0.75 418 0.025 10
+    0.50 365 0.025 10
+\end{filecontents}
+
+\begin{document}
+    \maketitle
+    \section{Introduction}
+        The objective of this lab is to understand how rate of reaction changes in
+        varying environments. This lab will focus on the decomposition of sodium
+        perborate (\ce{NaBO3}), the active ingredient in Efferdent denture cleaning
+        tablets, in \ce{HCl} solutions of varying molarity.
+        \subsection{Question}
+            How does the rate of decomposition of \ce{NaBO3} change in \ce{HCl} solutions
+            of varying molarity?
+        \subsection{Hypothesis}
+            I predict that as the molarity of the \ce{HCl} solution decreases, the
+            rate of decomposition of \ce{NaBO3} will decrease, as there will be less
+            solution to react with the salt.
+            \centerline{\(\ce{HCl}(aq)+\ce{NaBO3}(s)\to\ce{HBO3}(aq)+\ce{NaCl}(aq)\)}
+        \subsection{Variables}
+            \begin{itemize}
+                \item \textbf{Manipulated Variable:} Molarity of \ce{HCl} solution
+                \begin{itemize}
+                    \item \SI{0.50}{\Molar}
+                    \item \SI{0.75}{\Molar}
+                    \item \SI{1.0}{\Molar}
+                \end{itemize}
+                \item \textbf{Dependent Variable:} Time of decomposition of \ce{NaBO3} tablet
+                \item \textbf{Controlled Variables:}
+                \begin{itemize}
+                    \item Type of tablet used (Efferdent)
+                    \item Mass of tablet (\(\sim\SI{5.0}{\g}\))
+                    \item Temperature of \ce{HCl} (\(\sim\SI{21.0}{\celsius}\))
+                    \item Temperature of \ce{H2O} (\(\sim\SI{21.0}{\celsius}\))
+                    \item Water used to dilute \ce{HCl} solution (distilled water)
+                \end{itemize}
+                \item \textbf{Trials:} Three trials per iteration of molarity
+            \end{itemize}
+        \subsection{Materials}
+            \begin{itemize}
+                \item 9 Efferdent tablets
+                \item 250 mL \ce{HCl} Solution
+                \item 250 mL distilled \ce{H2O}
+                \item 3 beakers
+                \item 2 graduated cylinders
+                \item 3 timers
+            \end{itemize}
+        \subsection{Procedure}
+            \begin{enumerate}
+                \item Gather materials
+                \item As necessary, heat \ce{H2O} and \ce{HCl} solutions until \SI{21.0}{\celsius}
+                \item Fill beaker with \SI{25.0}{\mL} of \SI{1.0}{\Molar} \ce{HCl} solution
+                \begin{itemize}
+                    \item Later trials will require lower molarities; dilute solution
+                        as necessary to reach desired molarities (\SI{0.75}{\Molar},
+                        \SI{0.50}{\Molar})
+                \end{itemize}
+                \item Drop tablet into beaker, start timer
+                \begin{itemize}
+                    \item Make sure tablet is whole (all tablets \(\sim\SI{5.0}{\g}\))
+                \end{itemize}
+                \item When tablet is fully dissolved, stop timer
+                \begin{itemize}
+                    \item Record time taken
+                    \item Reset timer
+                \end{itemize}
+                \item Repeat items 2-6 for trials 2-3
+                \item Repeat items 2-7 for \SI{0.75}{\Molar} and \SI{0.50}{\Molar}
+            \end{enumerate}
+            \textbf{Note that trials on differing or changing molarities can be run simultaneously
+                with the three beakers in the materials list}
+    \section{Data}
+        \subsection{Table}
+            \begin{tabular}{|c||c|c|c|c|}
+                \hline
+                \bfseries{Molarity} & \bfseries{Trial 1} & \bfseries{Trial 2} & \bfseries{Trial 3} & \bfseries{Average}
+                \\\hline
+                \SI{0.50}{\Molar} \(\pm 0.025\) & \SI{323}{\s} \(\pm \SI{10.}{\s}\) & \SI{429}{\s} \(\pm \SI{10.}{\s}\) & \SI{365}{\s} \(\pm \SI{10.}{\s}\) & \SI{372}{\s} \(\pm \SI{10.}{\s}\)
+                \\\hline
+                \SI{0.75}{\Molar} \(\pm 0.025\) & \SI{339}{\s} \(\pm \SI{10.}{\s}\) & \SI{369}{\s} \(\pm \SI{10.}{\s}\) & \SI{418}{\s} \(\pm \SI{10.}{\s}\) & \SI{375}{\s} \(\pm \SI{10.}{\s}\)
+                \\\hline
+                \SI{1.0}{\Molar} \(\pm 0.025\) & \SI{381}{\s} \(\pm \SI{10.}{\s}\) & \SI{373}{\s} \(\pm \SI{10.}{\s}\) & \SI{377}{\s} \(\pm \SI{10.}{\s}\) & \SI{377}{\s} \(\pm \SI{10.}{\s}\)
+                \\\hline
+            \end{tabular}
+        \subsection{Graph}
+            \begin{tikzpicture}
+                \begin{axis} [
+                    scale=1.25,
+                    title={Reaction Speed Relative to Molarity of \ce{HCl} Solution},
+                    xlabel={Molarity of \ce{HCl} Solution [\si{\Molar}]},
+                    ylabel={Speed of Reaction [\si{\s}]},
+                    xmin=0.5, xmax=1.0,
+                    ymin=0.0, ymax=500.0,
+                    legend pos=south east,
+                    ymajorgrids=true,
+                    grid style=dashed
+                ]
+                    \addplot [
+                        color=black,
+                        mark=*
+                    ] plot [
+                        error bars/.cd,
+                            x dir=both,
+                            y dir=both,
+                            x explicit,
+                            y explicit
+                    ] table [
+                        x=x,
+                        y=y,
+                        x error=xun,
+                        y error=yun
+                    ]{avg.dat};
+
+                    \addplot [
+                        color=red,
+                        mark=*
+                    ] plot [
+                        error bars/.cd,
+                            x dir=both,
+                            y dir=both,
+                            x explicit,
+                            y explicit
+                    ] table [
+                        x=x,
+                        y=y,
+                        x error =xun,
+                        y error=yun
+                    ]{t_1.dat};
+
+                    \addplot [
+                        color=green,
+                        mark=*
+                    ] plot [
+                        error bars/.cd,
+                            x dir=both,
+                            y dir=both,
+                            x explicit,
+                            y explicit
+                    ] table [
+                        x=x,
+                        y=y,
+                        x error=xun,
+                        y error=yun
+                    ]{t_2.dat};
+
+                    \addplot [
+                        color=blue,
+                        mark=*
+                    ] plot [
+                        error bars/.cd,
+                            x dir=both,
+                            y dir=both,
+                            x explicit,
+                            y explicit
+                    ] table [
+                        x=x,
+                        y=y,
+                        x error=xun,
+                        y error=yun
+                    ]{t_3.dat};
+
+                    \addlegendentry{Average}
+                    \addlegendentry{Trial 1}
+                    \addlegendentry{Trial 2}
+                    \addlegendentry{Trial 3}
+                \end{axis}
+            \end{tikzpicture}
+        \subsection{Calculations}
+            \begin{itemize}
+                \item Dilution:
+                    \[M_{1} \cdot V_{1} = M_{2} \cdot V_{2}\]
+                    \centerline{Example\(\to\)\SI{0.75}{\Molar}}
+                    \[\SI{1.0}{\Molar} \cdot \SI{25.0}{\mL} = \SI{0.75}{\Molar} \cdot x\]
+                    \[x=\frac{\SI{1.0}{\Molar} \cdot \SI{25.0}{\mL}}{\SI{0.75}{\Molar}}\]
+                    \[x=\SI{33.3}{\mL}\]
+                \item Average:
+                    \[t_{avg}=\mean{t_{i}}\]
+                    \[t_{avg}=\frac{t_{0}+t_{1}+t_{2}}{3}\]
+                    \centerline{t\(\to\)Trial 1}
+                    \[t_{avg}=\frac{\SI{381}{\s}+\SI{373}{\s}+\SI{377}{\s}}{3}\]
+                    \[t_{avg}=\SI{377}{\s}\]
+            \end{itemize}
+    \section{Analysis}
+        My hypothesis, that the rate of reaction would decrease as molarity of the \ce{HCl}
+        solution decreased, was invalid according to my data. There seemed to be very little
+        correlation between the molarity of the acid and the rate of the reaction between
+        \ce{HCl} and the tablets. The averages of the data could even suggest that reaction
+        rate increases as the molarity of \ce{HCl} decreases. The rate of reaction went
+        from an average of \SI{377}{\s} in \SI{1.0}{\Molar} \ce{HCl} to \SI{375}{\s} in
+        \SI{0.75}{\Molar}, and decreasing even further to \SI{372}{\s} in \SI{0.50}{\Molar}.
+        However, it is worth noting that the range of \SI{5}{\s} in these values only
+        makes up a \(\sim{}1.3\%\) difference, well within the margins of error--\SI{10}{\s}--
+        thus making it statistically insignificant. However, looking at the raw data shows
+        an interesting \textit{lack} of a pattern. Sometimes, the solution with the lowest molarity
+        had the fastest reaction. In fact, the solution with the highest molarity never had
+        the fastest reaction. In trial 1 of the three molarities, for example, the lowest
+        molarity solution, \SI{0.50}{\Molar} \ce{HCl}, had the fastest reaction at \SI{323}{\s}.
+        This was followed by the \SI{0.75}{\Molar} solution, with a reaction length of \SI{339}{\s}.
+        The slowest reaction was the \SI{1.0}{\Molar} solution, with a reaction length of \SI{381}{\s}.
+        \\
+        I believe that the impurities in the individual tablets was the cause of the discrepancies
+        in the data. In a lab with pure salts, our class observed that the salts would react
+        faster in a high concentration acid as opposed to a low concentration acid. However, the tablets
+        are not pure. They contain, among other chemicals, citric acid, food coloring and odor-releasing
+        chemicals. One of the important assumptions that I had to make during this lab is that tablets
+        of the same brand and "model", per se, would behave the same. However, that was not necessarily
+        a guarantee. Production is not perfect, and different masses of chemicals can go into different
+        tablets, possibly creating a tablet-to-tablet behavior difference. I knew, during the lab, that
+        the \ce{HCl} solution was uniform, as it had all been taken from a single source, and, of course,
+        any aqueous impurities would most likely have spread themselves throughout the solution. Beyond
+        the tablets, judging the end of the reaction was also a struggle. As the tablet begins to near
+        complete dissolution, it begins to float to the surface, making it especially difficult to see,
+        as the bubbles "hide" the tablet. This is why there is a considerable uncertainty in the time
+        measurement, as the timer could have been stopped in a 20-second window where the tablet was
+        extremely close to dissolving completely.
+        \\
+        In the future, students should use more pure substances instead of tablets. In this experiment,
+        the tablets proved to be an uncontrolled variable that skewed results. Not every tablet was
+        the same as the other, producing contradictory results. Pure substances would remove the
+        variables of the production processes of tablets, leaving the reaction to take place without
+        the "interference" of extraneous chemicals. The other issue I mentioned in the previous paragraph--
+        judging the end of a reaction--comes down to the persistence of the student, I believe. It is
+        not impossible to see the tablet as it gets smaller; the tablet stays in the water. Looking
+        under the beaker instead of from the side would probably allow for better spotting of the tablet
+        as it dissolves, as that would provide a view with fewer bubbles.
+\end{document}
