@@ -1,0 +1,54 @@
+\documentclass[a4paper]{article}
+
+\usepackage[version=3]{mhchem}
+\usepackage{siunitx}
+
+\title{Determining \(\Delta H_{rxn}\) of \(\ce{NH4Cl}+\ce{NaOH}\to\ce{NH3}+\ce{NaCl}+\ce{H2O}\)}
+\date{24 October 2014}
+\author{Tarik Onalan}
+
+\DeclareSIUnit\Molar{\textsc{m}}
+
+\begin{document}
+    \maketitle
+
+    \section{Abstract}
+        \subsection{Purpose}
+            Using the reactants listed in the materials, determine the \(\Delta H_{rxn}\)
+            for the reaction that occurs when these reactants are mixed:
+            \[\ce{NH4Cl}_{(aq)}+\ce{NaOH}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}\]
+        \subsection{Materials}
+            \begin{itemize}
+                \item \SI{50}{\ml} \SI{2.0}{\Molar} \(\ce{NH3}_{(aq)}\)
+                \item \SI{100}{\ml} \SI{2.0}{\Molar} \(\ce{HCl}_{(aq)}\)
+                \item \SI{50}{\ml} \SI{2.0}{\Molar} \(\ce{NaOH}_{(aq)}\)
+                \item \SI{50}{\ml} Graduated Cylinder
+                \item Calorimeter and Lid
+                \item Deionized/Distilled \(\ce{H2O}_{(l)}\)
+                \item Thermometer
+            \end{itemize}
+    \section{Model}
+        \[\ce{NH4Cl}_{(aq)}+\ce{NaOH}_{(aq)}\]
+        \hrulefill
+        \[\ce{HCl}_{(aq)}+\ce{NaOH}_{(aq)}\to\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}\]
+        \dotfill
+        \[\ce{NH3}_{(aq)}+\ce{HCl}_{(aq)}\to\ce{NH4Cl}_{(aq)}\]
+        \[\ce{NH4Cl}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{HCl}_{(aq)}\]
+        \hrulefill
+        \[\ce{NH4Cl}_{(aq)}+\ce{NaOH}_{(aq)}+\ce{HCl}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}+\ce{HCl}_{(aq)}\]
+        \[\ce{NH4Cl}_{(aq)}+\ce{NaOH}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}\]
+    \section{Data}
+        \begin{itemize}
+            \item \(\ce{HCl}_{(aq)}+\ce{NaOH}_{(aq)}\to\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}\)
+                has a \(\Delta H_{f}\) of \SI{-94.98}{\kJ\per\mol}
+            \item \(\ce{NH4Cl}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{HCl}_{(aq)}\) has a
+                \(\Delta H_{f}\) of \SI{52.80}{\kJ\per\mol}
+        \end{itemize}
+        Adding \SI{-94.98}{\kJ\per\mol} and \SI{52.80}{\kJ\per\mol} gives a total
+        enthalpy of reaction of \SI{-42.18}{\kJ\per\mol}
+        \[\Delta H_{rxn} = \Delta H_{f_{1}} + \Delta H_{f_{2}}\]
+    \section{Conclusion}
+        Adding the two reactions above yields the proper equation for the reaction.
+        Thus, adding the respective \(\Delta H_{f}\) of the two reactions is equivalent
+        to the \(\Delta H_{rxn}\) of \(\ce{NH4Cl}_{(aq)}+\ce{NaOH}_{(aq)}\to\ce{NH3}_{(aq)}+\ce{NaCl}_{(aq)}+\ce{H2O}_{(l)}\)
+\end{document}
