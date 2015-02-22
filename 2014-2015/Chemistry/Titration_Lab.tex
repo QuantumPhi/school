@@ -1,7 +1,17 @@
 \documentclass[a4paper]{article}
 
+\usepackage{booktabs}
 \usepackage[version=3]{mhchem}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
 \usepackage{siunitx}
+
+\newcommand{\pH}{\text{pH}}
+\DeclareSIUnit\Molar{\textsc{m}}
+\sisetup{
+    round-mode=places,
+    round-precision=2
+}
 
 \title{Analyzing the Relationship Between the Acidity and the Conductivity of a Solution}
 \date{23 February 2015}
@@ -10,8 +20,290 @@
 \begin{document}
     \maketitle
     \section{Purpose}
-        Understand how standing \ce{H+} ion concentration in a solution affects conductivity
+        Understand how standing \ce{H+} and/or \ce{OH-} ion concentration in a solution affects conductivity
         measured in \si{\micro\siemens}.
+        \subsection{Hypothesis}
+            Conductivity will decrease as \pH{} approaches 7, as the ions that would
+            otherwise facilitate the conduction of electricity (\ce{H+}/\ce{OH-})
+            would be neutralized.
+    \section{Materials}
+        \begin{itemize}
+            \item \SI{150}{\mL} \SI{0.1}{\Molar} \ce{HCl}
+            \item \SI{150}{\mL} \SI{0.1}{\Molar} \ce{NaOH}
+            \item 1 \SI{100}{\mL} buret$+$stand
+            \item 1 \SI{250}{\mL} beaker
+            \item 1 \SI{50}{\mL} graduated cylinder
+            \item 1 stir plate$+$bar
+            \item 1 logging device
+            \item 1 \pH probe
+            \item 1 conductivity probe
+            \item 1 USB flash disk
+            \item phenolphthalein
+        \end{itemize}
+    \section{Procedure}
+        \begin{enumerate}
+            \item Turn on logger
+            \item Plug in probes and USB disk
+            \item Set up buret with stand
+            \item Put stir plate below buret
+            \item Fill graduated cylinder with \SI{50}{\mL} \ce{HCl}
+            \item Fill buret with \SI{50}{\mL} \ce{NaOH}
+            \item Transfer \ce{HCl} to beaker
+            \item Put 2-3 drops of phenolphthalein in the beaker
+            \item Calibrate probes
+            \item Put beaker on top of stir plate
+            \item Put the stir bar in the beaker
+            \item Set the stir bar spinning at $\frac{1}{4}$ speed
+            \item Open the buret so there is $\sim1$ drop \si{\per\second}
+            \item Start logger
+            \item Let experiment run for 50 seconds
+            \item Stop logger
+            \item Export data to USB disk
+            \item Neutralize any remaining \ce{HCl}
+            \item Turn off stir plate
+            \item Remove stir bar
+            \item Clean beaker
+            \item Repeat $5-21$ as necessary for data collection
+        \end{enumerate}
     \section{Data}
-        
+    \begin{table}[p]
+        \begin{center}
+            \caption{Trial 1}
+            \label{trial1}
+            \pgfplotstabletypeset[
+                multicolumn names,
+                col sep=comma,
+                display columns/0/.style={
+                    column name=$Time$,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=$\pH$,
+                    column type={S},string type},
+                display columns/2/.style={
+                    column name=$Conductivity$,
+                    column type={S}, string type},
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                        \si\s & & \si{\micro\siemens}\\
+                        \midrule}
+                },
+                columns/pH/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.20$}
+                    }
+                },
+                columns/conductivity/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm800.$}
+                    }
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{foo1.csv}
+        \end{center}
+    \end{table}
+        \begin{table}[p]
+            \begin{center}
+                \caption{Trial 3}
+                \label{trial2}
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=$Time$,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=$\pH$,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=$Conductivity$,
+                        column type={S}, string type},
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\s & & \si{\micro\siemens}\\
+                            \midrule}
+                    },
+                    columns/pH/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.20$}
+                        }
+                    },
+                    columns/conductivity/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm800.$}
+                        }
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{foo2.csv}
+            \end{center}
+        \end{table}
+        \begin{table}[p]
+            \begin{center}
+                \caption{Trial 3}
+                \label{trial3}
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=$Time$,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=$\pH$,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=$Conductivity$,
+                        column type={S}, string type},
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\s & & \si{\micro\siemens}\\
+                            \midrule}
+                    },
+                    columns/pH/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.20$}
+                        }
+                    },
+                    columns/conductivity/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm800.$}
+                        }
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{foo3.csv}
+            \end{center}
+        \end{table}
+        \begin{table}[p]
+            \begin{center}
+                \caption{Average}
+                \label{avg1}
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=$Time$,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=$\pH$,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=$Conductivity$,
+                        column type={S}, string type},
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\s & & \si{\micro\siemens}\\
+                            \midrule}
+                    },
+                    columns/pH/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.20$}
+                        }
+                    },
+                    columns/conductivity/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm800.$}
+                        }
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{avg1.csv}
+            \end{center}
+        \end{table}
+        \begin{tikzpicture}
+            \begin{axis}[
+                scale=1.75,
+                title={Conductivity Relative to $\pH$ of Solution},
+                xlabel={Acidity [$\pH$]},
+                ylabel={Conductivity [\si{\micro\siemens}]},
+                legend pos=south west
+            ]
+                \addplot plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit
+                ] table [
+                    x=pH,
+                    y=conductivity,
+                    col sep=comma
+                ]{foo1.csv};
+                \addplot plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit
+                ] table [
+                    x=pH,
+                    y=conductivity,
+                    col sep=comma
+                ]{foo2.csv};
+                \addplot plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit
+                ] table [
+                    x=pH,
+                    y=conductivity,
+                    col sep=comma
+                ]{foo3.csv};
+                \addplot plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit,
+                        x fixed=0.2,
+                        y fixed=800
+                ] table [
+                    x=pH,
+                    y=conductivity,
+                    col sep=comma
+                ]{avg1.csv};
+                \addplot[
+                    color=red,
+                    mark=none,
+                    domain=0.74:1.34
+                ]{-2672.8*x^2 + 4270.6*x + 17618};
+                \addlegendentry{Trial 1}
+                \addlegendentry{Trial 2}
+                \addlegendentry{Trial 3}
+                \addlegendentry{Average}
+                \addlegendentry{$-2672.8x^2+4270.6x+17618$}
+            \end{axis}
+        \end{tikzpicture}
+    \section{Conclusion}
+        My hypothesis, that the conductivity would decrease as \pH approached $7$, was
+        partially correct. I was only able to test with an acidic starting point, meaning
+        that I only observed the \pH approaching $7$ from $0\le{\pH}\l{7}$. However, I can
+        conclude that as the \pH approaches $7$ from $0\le{\pH}\l{7}$, the conductivity decreases.
+        Simply from a mathematical standpoint, the Pearson correlation coefficient---the measure of the
+        "correlatedness" of any two datasets---of the \pH and conductivity returns
+        $-0.95$, which is an almost exact (negative) linear relationship. This is evident
+        by looking at the graph, which shows that as the \pH increased, the conductivity
+        decreased. When the \pH was $\sim0.74$ (starting \pH), the conductivity was
+        \SI{19348.0}{\micro\siemens}. When the \pH increased to $\sim1.34$, however,
+        the conductivity decreased to \SI{18453.7}{\micro\siemens}. Of course, there are
+        many more values in between, but the general trend is similar to the one described.
+        \\
+        There were many difficulties in the course of this lab. Among the more mundane ones,
+        I accidentally tried to titrate \ce{HCl} with \ce{HCl}, which, as expected, did not
+        have much effect. However, my biggest difficulty was keeping the probes calibrated,
+        and it shows in my data. In my lab, I was using \SI{0.1}{\Molar} \ce{HCl} and \ce{NaOH},
+        which have \pH values of $1$ and $13$, respectively. However, the \pH probe in particular
+        would not hold its calibration, and in my second and third trials, the starting \pH
+        of the \ce{HCl} is incorrectly reported as $0.82$ and $0.40$. Even so, this does not
+        invalidate my conclusion, because there is still an obvious downward trend in the
+        conductivity-\pH graphs.
+        \\
+        The first problem I stated is easy to fix; I need to be more attentive while I am
+        at my lab station. However, the latter problem is more difficult. Lab probes---especially
+        ones that are accurate---are expensive, and are most likely too expensive for my
+        school to purchase. As such, the only practical way to compensate for calibration
+        error right now is to carry out many trials, so that the average data may cancel
+        out any random error introduced by deviation.
 \end{document}

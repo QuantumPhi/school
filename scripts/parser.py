@@ -9,7 +9,6 @@ def to_csv(dataset, fname):
     for i in xrange(len(dataset)):
         with open(expanduser("~/Documents/DATA/%s%d.csv") % (fname, i+1), "wb") as file:
             writer = csv.writer(file)
-            writer.writerow(["time", "pH", "conductivity"])
             for point in dataset[i]: (lambda w, p: w.writerow(p))(writer, point)
 
 def avg(dataset):
