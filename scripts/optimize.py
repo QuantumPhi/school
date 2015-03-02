@@ -5,12 +5,12 @@ import scipy.optimize as o
 from os.path import expanduser
 
 set = np.array([row for row in csv.reader(open(expanduser("~/Documents/DATA/avg1.csv")))]).astype(np.float)
-fun = lambda x, y: x[3]*np.log(x[0]*y**2+x[1]*y+x[2])+x[4]
+fun = lambda x, y: x[0]*np.log(x[1]*y+x[2])+x[3]
 
 def err(x):
     return sum(((fun)(x, set[i][1]) - set[i][2])**2 for i in xrange(len(set)))
 
-guess = [1., 1., 1., 1., 1.]
+guess = [1., 1., 1., 1.]
 
 opt = o.minimize(err, guess, method="L-BFGS-B")["x"]
 
