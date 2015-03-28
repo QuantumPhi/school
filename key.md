@@ -3,12 +3,12 @@ __Key for notes/outlines__
 | Key | Value |
 |-----|-------|
 | `->` | to/is/in |
-| `~>` | of |
+| `~>` | of/from |
 | `+>` | also |
 | `=>` | changed to |
 | <code>&#124;></code> | because/for |
-| `!>` | instead/did not |
-| `?>` | possibly |
+| `!>` | instead/however/did not |
+| `?>` | if/possibly |
 | `#>` | example |
 | `~` | approximately |
 | `+` | increase |

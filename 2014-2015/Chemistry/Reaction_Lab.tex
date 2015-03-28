@@ -1,0 +1,234 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage[version=3]{mhchem}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{siunitx}
+
+\def\abs#1{\left| #1 \right|}
+\def\mean#1{\left< #1 \right>}
+\DeclareSIUnit\Molar{\textsc{m}}
+\sisetup{
+    round-mode=places,
+    round-precision=3
+}
+
+\title{Analyzing the Relationship Between the Concentration of \ce{KIO3} and the
+Speed of the \ce{NaHSO3}-based Iodine Clock Reaction}
+\date{31 March 2015}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+    \section{Introduction}
+        \subsection{Purpose}
+            % PURPOSE %
+        \subsection{Hypothesis}
+            Reaction speed will decrease (increasing the time taken to react) as \ce{KIO3}
+            concentration decreases, as there will be fewer \ce{KIO3} molecules available
+            to react at any one time.
+        \subsection{Variables}
+            \textbf{Independent Variable}
+            \begin{itemize}
+                \item \ce{KIO3} concentration [\si\Molar]
+            \end{itemize}
+            \textbf{Dependent Variable}
+            \begin{itemize}
+                \item Reaction speed [\si\s]
+            \end{itemize}
+            \textbf{Controlled Variables}
+            \begin{itemize}
+                \item Molarity of \ce{NaHSO3} solution [\SI{0.02}{\Molar}]
+                \item Volume of \ce{KIO3} solution [\SI{10.0}{\mL}]
+                \item Volume of \ce{NaHSO3} solution [\SI{10.0}{\mL}]
+                \item Temperature of solutions [\SI{25.2}{\celsius}]
+                \item Distilled Water
+            \end{itemize}
+    \section{Materials}
+        \begin{itemize}
+            \item \SI{75}{\mL} \SI{0.02}{\Molar} \ce{KIO3}
+            \item \SI{100}{\mL} \SI{0.02}{\Molar} \ce{NaHSO3}
+            \item 9 $\cdot$ test tubes
+            \item 2 $\cdot$ \SI{100}{\mL} beaker
+            \item 2 $\cdot$ \SI{10}{\mL} graduated cylinder
+            \item 1 $\cdot$ \SI{2}{\mL} pipette
+            \item 1 $\cdot$ timer
+            \item 1 $\cdot$ thermometer
+        \end{itemize}
+    \section{Procedure}
+        \begin{enumerate}
+            \item Pour \ce{KIO3} and \ce{NaHSO3} solutions into beakers
+            \item Measure \SI{10}{\mL} \ce{KIO3} solution in graduated cylinder
+            \item Measure \SI{10}{\mL} \ce{NaHSO3} solution in graduated cylinder
+            \item If \ce{KIO3} solution is not \SI{10}{\mL}, fill up to \SI{10}{\mL} with distilled water
+            \item Pour both solutions into test tube
+            \item Start timer
+            \item Wait until solution turns blue/black
+            \item Stop timer
+            \item Record time taken to react
+            \item Repeat steps $2-9$ $2$ times with \SI{8}{\mL} and \SI{6}{\mL} \ce{KIO3} solution, respectively
+            \item Repeat steps $1-10$ as necessary for data collection
+        \end{enumerate}
+    \newpage
+    \section{Data}
+        \begin{center}
+            Table 1: Data
+        \end{center}
+        \resizebox{\linewidth}{!}{
+            \pgfplotstabletypeset[
+                multicolumn names,
+                col sep=comma,
+                display columns/0/.style={
+                    column name=Molarity,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=Trial 1,
+                    column type={S},string type},
+                display columns/2/.style={
+                    column name=Trial 2,
+                    column type={S},string type},
+                display columns/3/.style={
+                    column name=Trial 3,
+                    column type={S}, string type},
+                columns/m/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.50$}
+                    }
+                },
+                columns/1/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.50$}
+                    }
+                },
+                columns/2/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.50$}
+                    }
+                },
+                columns/3/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.50$}
+                    }
+                },
+                columns/avg/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.50$}
+                    }
+                },
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                         & \si\s & \si\s & \si\s\\
+                        \midrule}
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{iodate_data.csv}
+        }
+        \begin{tikzpicture}
+            \begin{axis}[
+                scale=1.75,
+                title={Reaction Speed Relative to the Molarity of \ce{KIO3} Solution},
+                xlabel={Molarity [\si\Molar]},
+                ylabel={Reaction Speed [\si\s]},
+                legend pos=south west
+            ]
+                \addplot[
+                    only marks
+                ] plot [
+                    error bars/.cd,
+                        y dir=both,
+                        y explicit,
+                        y fixed=0.5
+                ] table [
+                    x=m,
+                    y=avg,
+                    col sep=comma
+                ]{iodate_data.csv};
+                \addplot[
+                    color=red,
+                    mark=none,
+                    very thick,
+                    domain=0.0105:0.0225
+                ]{0.10396041/(1.23436068*x-0.00717099)+2.97172032};
+                \addlegendentry{Average}
+                \addlegendentry{$\frac{0.104}{1.234x-0.00717}+2.972$}
+            \end{axis}
+        \end{tikzpicture}
+    \section{Calculations}
+        \subsection{Average}
+            \begin{equation}
+                \mean{\si\s(\si\Molar)}
+            \end{equation}
+            \begin{equation}
+                \frac{\displaystyle\sum_i{\si\s(\si\Molar)}}{i}
+            \end{equation}
+            \begin{equation}
+                \frac{\si\s(\si\Molar_1)+\si\s(\si\Molar_2)+...+\si\s(\si\Molar_{i-1})+\si\s(\si\Molar_i)}{i}
+            \end{equation}
+        \subsection{Error and Minimization}
+            \begin{center}
+                Error was calculated using sum squared error, which is defined as follows:
+                \begin{equation}
+                    E=\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2}
+                \end{equation}
+                A program carried out the minimization of the above function, which entails
+                tracing the derivative of the function with respect to a given parameter
+                ---defined here as $k$---to the local minima of the function
+                \begin{equation}
+                    E'=\frac{\partial}{\partial k}(\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2})
+                \end{equation}
+            \end{center}
+        \subsection{Line of Best Fit}
+            \begin{center}
+                When choosing my line of best fit, I first tried to piece together all of
+                the information that I could gather without data. First I knew that my function
+                $?(x)$ had to satisfy the following conditions for the following scenarios:
+                \begin{equation}
+                    ?(x) = \left\{
+                        \begin{array}{lr}
+                            \text{Zero Order:} & [A]=-kt+[A]_0 \\
+                            \text{First Order:} & \ln{[A]}=-kt+\ln{[A]_0} \\
+                            \text{Second Order:} & \frac{1}{[A]}=kt+\frac{1}{[A]_0} \\
+                            \text{nth Order:} & \frac{1}{[A]^{n-1}}=(n-1)kt+\frac{1}{[A]_0^{n-1}}
+                        \end{array}
+                    \right.
+                \end{equation}
+                which I simplified to
+                \begin{equation}
+                    ?(x) = \left\{
+                        \begin{array}{l}
+                            f(x)=a(bx+c)+d \\
+                            g(x)=a\ln(bx+c)+d \\
+                            h(x)=\frac{a}{bx+c}+d
+                        \end{array}
+                    \right.
+                \end{equation}
+                I ended up having to assume that the rate of reaction was less than or
+                equal to $2$ primarily due to the fact that ternary (third-order or more)
+                reactions are extremely rare, and testing for one would subsequently be
+                impractical.
+                \\
+                Judging by the appearance of the graphed data---steep slope for smaller
+                $x$, small slope for larger $x$---I had an intuition that the best model
+                would be the second order reaction:
+                \begin{equation}
+                    h(x)=\frac{a}{bx+c}+d
+                \end{equation}
+                Testing my prediction proved me correct, as the error was much lower
+                for the function $h(x)$---representing a second order reaction---than
+                for $g(x)$ or $f(x)$---representing first and zeroeth order reactions,
+                respectively. These results are shown in the table below.
+                \\
+                \bf{Error}
+                \\
+                \begin{tabular}{|c|c|c|}
+                    \hline
+                    $f(x)$ & $g(x)$ & $h(x)$
+                    \\\hline
+                    $\num[round-precision=5]{1.51001666371}$ & $\num[round-precision=5]{13.9546825882}$ & $\num[round-precision=5]{6.5138436219}\cdot10^{-8}$
+                    \\\hline
+                \end{tabular}
+            \end{center}
+\end{document}
