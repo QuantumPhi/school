@@ -26,7 +26,7 @@ Speed of the \ce{NaHSO3}-based Iodine Clock Reaction}
         \subsection{Purpose}
             % PURPOSE %
         \subsection{Hypothesis}
-            Reaction speed will decrease (increasing the time taken to react) as \ce{KIO3}
+            Reaction rate will decrease (increasing the time taken to react) as \ce{KIO3}
             concentration decreases, as there will be fewer \ce{KIO3} molecules available
             to react at any one time.
         \subsection{Variables}
@@ -231,4 +231,36 @@ Speed of the \ce{NaHSO3}-based Iodine Clock Reaction}
                     \\\hline
                 \end{tabular}
             \end{center}
+    \section{Conclusion}
+        My hypothesis, that the iodine clock reaction would take longer the lower the
+        concentration of \ce{KIO3}, was correct. The data I collected shows---throughout
+        all 3 trials---that as \ce{KIO3} concentration decreases, the reaction takes
+        longer to ``complete'', per se. The average, as shown by the graph, has a definite
+        downward trend, starting at $(0.012, 16.58)$ and ending at $(0.02, 8.91)$. Another
+        proof could be the fact that the data almost perfectly fits the line of best fit,
+        with a sum squared error of $\num[round-precision=5]{6.5138436219}\cdot10^{-8}$;
+        the best-fit model is a power function with an exponent of $-1$, which means that
+        it is monotonically decreasing on the interval $(0,+\infty)$, so it would be prudent
+        to assume that any further data points---further dilutions pushing the concentration
+        to the ``left'' of the graph---would follow the model, increasing the time taken to
+        react.
+        \\
+        The only major difficulty in this lab was making sure that the \ce{KIO3} and
+        \ce{NaHSO3} solutions did not contaminate each other. I did experience minor
+        issues in trial 1, molarity $0.02$ and trial 1, molarity $0.012$. In the former,
+        I dropped a trace amount of \ce{KIO3} into my \ce{NaHSO3}, causing the reaction
+        to proceed faster than normal. In the latter reaction, I did the opposite, dropping
+        a trace amount of \ce{NaHSO3} into my \ce{KIO3}, reacting and further lowering the
+        already low concentration of \ce{KIO3}. Even so, my conclusion is still valid, as the
+        other trials ($2-3$) display the same inverse correlation between molarity and time
+        taken for the solutions to react.
+        \\
+        In the future, I should make sure that all of my solutions are spaced sufficiently
+        apart, so there is little likelihood that I drop solution into a graduated cylinder
+        or test tube before I mean to mix the two solutions. Given that this is still
+        a ``likelihood'', however, I could also run more trials and increase the number
+        of test cases---both of which were 3 for this experiment---both to compensate
+        for any possible execution errors, and to have a more robust dataset by which
+        to make my conclusions, as I found that 3 points over 3 trials was much too
+        sparse to make a certain conclusion with any level of comfort.
 \end{document}
