@@ -6,7 +6,13 @@
 \usepackage{siunitx}
 \usepackage{pgfplots, pgfplotstable}
 
-\title{Investigating Effect of Significant Resistance on a Falling Object}
+\def\mean#1{\left< #1 \right>}
+\sisetup{
+    round-mode=figures,
+    round-precision=3
+}
+
+\title{Investigating Effect of Resistance on the Net Force on a Falling Object}
 \date{5 March 2015}
 \author{Tarik Onalan}
 
@@ -14,11 +20,11 @@
     \maketitle
     \section{Introduction}
         \subsection{Purpose}
-            Understand how resistance affects a falling object by comparing how a
+            Understand how density affects a falling object by comparing how a
             steel ball bearing falls in air and in water.
         \subsection{Hypothesis}
             As resistance increases, the net force on the ball bearing will decrease,
-            as the resistance will work against the force of gravity.
+            as more fluid will work against the force of gravity.
         \subsection{Variables}
             \textbf{Independent Variable}
             \begin{itemize}
@@ -29,7 +35,6 @@
                 \item Net force ($F_{net}$)
                 \begin{itemize}
                     \item Acceleration
-                    \item Velocity
                 \end{itemize}
             \end{itemize}
             \textbf{Controlled Variables}
@@ -41,7 +46,7 @@
             \end{itemize}
     \section{Materials}
         \begin{itemize}
-            \item \SI{1.0}{\L} \ce{H2O}
+            \item \SI{1.00}{\L} \ce{H2O}
             \item 1 $\cdot$ \SI{1.0}{\L} graduated cylinder
             \item 1 $\cdot$ metre-stick
             \item 1 $\cdot$ scale
@@ -64,4 +69,175 @@
             \item Repeat steps 8-12 as necessary for data collection
         \end{enumerate}
     \section{Data}
+        \begin{center}
+            Table 0: Information
+            \\
+            \pgfplotstabletypeset[
+                multicolumn names,
+                col sep=comma,
+                row sep=newline,
+                display columns/0/.style={
+                    column name=Medium,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=Density,
+                    column type={S},string type},
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                         & \si{\g\per\cm} \\
+                        \midrule}
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{
+                m,d
+                \text{Air},0.001225
+                \text{Water},0.999972
+            }
+            \\\hrulefill\\
+            Table 1: Raw Data
+            \resizebox{\linewidth}{!}{
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=Medium,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=Trial 1,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=Trial 2,
+                        column type={S},string type},
+                    display columns/3/.style={
+                        column name=Trial 3,
+                        column type={S}, string type},
+                    display columns/4/.style={
+                        column name=Trial 4,
+                        column type={S}, string type},
+                    display columns/5/.style={
+                        column name=Trial 5,
+                        column type={S}, string type},
+                    columns/1/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/2/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/3/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/4/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/5/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/avg/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                             & \si\s & \si\s & \si\s & \si\s & \si\s & \si\s\\
+                            \midrule}
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{foo.csv}
+            }
+            \\\hrulefill\\
+            Table 2: Acceleration and Net Force
+            \\
+            \pgfplotstabletypeset[
+                multicolumn names,
+                col sep=comma,
+                display columns/0/.style={
+                    column name=Medium,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=$a$,
+                    column type={S},string type},
+                display columns/2/.style={
+                    column name=$F_{net}$,
+                    column type={S},string type},
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                        & \si{\m\per\s\squared} & \si\N \\
+                        \midrule}
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{bar.csv}
+        \end{center}
+    \section{Calculations}
+        \subsection{Average}
+            \begin{center}
+                Given that $\si\s(r)$ is the function of time taken to drop given
+                resistance:
+                \begin{equation}
+                    \mean{\si\s(r)}
+                \end{equation}
+                \begin{equation}
+                    \frac{\displaystyle\sum_i{\si\s(r)}}{i}
+                \end{equation}
+                \begin{equation}
+                    \frac{\si\s(r_1)+\si\s(r_2)+...+\si\s(r_{i-1})+\si\s(r_i)}{i}
+                \end{equation}
+            \end{center}
+        \subsection{Acceleration and Force}
+            \begin{center}
+                Acceleration can be calculated from the distance traveled and the
+                taken to travel as follows:
+                \begin{equation}
+                    a=\frac{2d}{t^2}
+                \end{equation}
+                Let $a_g$ equal the acceleration in air and $a_l$ equal the acceleration
+                in the water. Solving for $a_{g,l}$ with their respective parameters
+                yields:
+                \begin{equation}
+                    a_g=\frac{2*100.0}{0.45^2}=\SI{987}{\cm\per\s\squared}=\SI{9.87}{\m\per\s\squared}
+                \end{equation}
+                \begin{equation}
+                    a_l=\frac{2*25.0}{0.25^2}=\SI{800}{\cm\per\s\squared}=\SI{8.00}{\m\per\s\squared}
+                \end{equation}
+                From there, calculating $F_{net}$ only requires multiplying the acceleration
+                by the mass of the ball bearing:
+                \begin{equation}
+                    F_g=a_g*0.0079=\SI{0.078}{\N}
+                \end{equation}
+                \begin{equation}
+                    F_l=a_l*0.0079=\SI{0.063}{\N}
+                \end{equation}
+            \end{center}
+    \section{Conclusion}
+        My hypothesis, that net force on an object will decrease as the density of
+        a fluid increases, is correct. In air, the net force of gravity on the ball
+        bearing was \SI{0.078}{\N}, while in water, the net force was \SI{0.063}{\N}.
+        This is proportional to the acceleration, which was \SI{9.87}{\m\per\s\squared}
+        in air, but dropped to \SI{8.00}{\m\per\s\squared} in water.
+        \\
+        A difficulty with this lab was the fact that, being human, I could not perfectly
+        time how long it took for the ball bearing to drop. There was obvious error;
+        acceleration in air was reported as being around \SI{9.87}{\m\per\s\squared},
+        while it should have been $\leq$ \SI{9.81}{\m\per\s\squared}. However, given
+        that the collected data was rather consistent---standard deviations of $0.037$
+        and $0.031$ for air and water, respectively---it would be safe to assume that
+        my hypothesis holds true, as the other data points adhere to the same result.
+        \\
+        In the future, I could conduct experiments with more mediums to get more information
+        before making a conclusion. While I did try to compensate for my lack of variation
+        with an increased trial count, I did not feel comfortable making a conclusion
+        with only two manipulations.
 \end{document}
