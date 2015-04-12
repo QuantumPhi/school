@@ -1,0 +1,224 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{pgfplots, pgfplotstable}
+
+\def\mean#1{\left< #1 \right>}
+\sisetup{
+    round-mode=places,
+    round-precision=1
+}
+
+\title{Investigating the Effect of String Tension on Fundamental Frequency}
+\date{18 March 2015}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+    \section{Introduction}
+        \subsection{Purpose}
+            Understand how string tension affects the fundamental frequency of the
+            string.
+        \subsection{Hypothesis}
+            As tension increases, the fundamental frequency of the string will also
+            increase.
+        \subsection{Variables}
+            \textbf{Independent Variable}
+            \begin{itemize}
+                \item Tension [\si\N]
+            \end{itemize}
+            \textbf{Dependent Variable}
+            \begin{itemize}
+                \item Fundamental frequency [\si\hertz]
+            \end{itemize}
+            \textbf{Controlled Variables}
+            \begin{itemize}
+                \item String length [\SI{0.50}{\m}]
+                \item String mass [\SI{0.085}{\kg}]
+                \item Type of string
+            \end{itemize}
+    \section{Materials}
+        \begin{itemize}
+            \item 1 $\cdot$ \SI{0.50}{\m} string
+            \item 1 $\cdot$ pitch sensor
+            \item 1 $\cdot$ spring scale
+        \end{itemize}
+    \section{Procedure}
+        \begin{enumerate}
+            \item Turn on pitch sensor
+            \item Tighten string to \SI{0}{\N}
+            \item ``Pluck'' string
+            \item Record frequency
+            \item Repeat steps 2-4 with \SI{5}{\N}, \SI{10}{\N}, and \SI{15}{\N}
+            \item Repeat steps 2-5 as necessary for data collection
+        \end{enumerate}
+    \section{Data}
+        \begin{center}
+            Table 1: Raw Data:
+            \pgfplotstabletypeset[
+                multicolumn names,
+                col sep=comma,
+                display columns/0/.style={
+                    column name=Tension,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=Trial 1,
+                    column type={S},string type},
+                display columns/2/.style={
+                    column name=Trial 2,
+                    column type={S},string type},
+                display columns/3/.style={
+                    column name=Trial 3,
+                    column type={S}, string type},
+                display columns/4/.style={
+                    column name=Average,
+                    column type={S}, string type},
+                columns/t/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.1$}
+                    }
+                },
+                columns/1/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.1$}
+                    }
+                },
+                columns/2/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.1$}
+                    }
+                },
+                columns/3/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.1$}
+                    }
+                },
+                columns/avg/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.1$}
+                    }
+                },
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                         & \si\s & \si\s & \si\s & \si\s\\
+                        \midrule}
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{foobar.csv}
+        \end{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                scale=1.75,
+                title={Fundamental Frequency Relative to String Tension},
+                xlabel={Tension [\si\N]},
+                ylabel={Fundamental Frequency [\si\hertz]},
+                legend pos=south east
+            ]
+                \addplot[
+                    color=blue,
+                    only marks
+                ] plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit,
+                        x fixed=0.1,
+                        y fixed=0.1
+                ] table [
+                    x=t,
+                    y=avg,
+                    col sep=comma
+                ]{foobar.csv};
+                \addplot[
+                    color=red,
+                    mark=none,
+                    very thick,
+                    domain=0:15
+                ]{1.97318355*sqrt(1.50045554*x)};
+                \addlegendentry{Average}
+                \addlegendentry{$1.97\sqrt{1.50x}$}
+            \end{axis}
+        \end{tikzpicture}
+    \section{Calculations}
+        \subsection{Average}
+            \begin{equation}
+                \mean{\si\hertz(\si\N)}
+            \end{equation}
+            \begin{equation}
+                \frac{\displaystyle\sum_i{\si\hertz(\si\N)}}{i}
+            \end{equation}
+            \begin{equation}
+                \frac{\si\hertz(\si\N_1)+\si\hertz(\si\N_2)+...+\si\hertz(\si\N_{i-1})+\si\hertz(\si\N_i)}{i}
+            \end{equation}
+        \subsection{Error and Minimization}
+            \begin{center}
+                Error was calculated using sum squared error, which is defined as follows:
+                \begin{equation}
+                    E=\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2}
+                \end{equation}
+                A program carried out the minimization of the above function, which entails
+                tracing the derivative of the function with respect to a given parameter
+                $k \in \{a, b, c, d, ...\}$ to the local minima of the function
+                \begin{equation}
+                    E'=\frac{\partial}{\partial k}(\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2})
+                \end{equation}
+            \end{center}
+        \subsection{Line of Best Fit}
+            \begin{center}
+                When choosing a model for my data, I had to keep in mind the basic
+                features.  I knew that the tension and fundamental frequency were related
+                by the function
+                \begin{equation}
+                    ?(x)=\frac{\sqrt{\frac{T}{m/L}}}{2L}
+                \end{equation}
+                where $T$ is tension, $m$ is mass, and $L$ is length. Because of this,
+                I assumed my data would also follow a square-root function.
+                \\
+                I constructed my function like so:
+                \begin{equation}
+                    f(x)=a\sqrt{bx+c}+d
+                \end{equation}
+                As a control, I also constructed a linear function:
+                \begin{equation}
+                    g(x)=a(bx+c)+d
+                \end{equation}
+                As I had predicted, the square-root function yielded much less error
+                when modeling the data, which is why I chose it as my model. The errors
+                for the square-root and linear functions are shown below:
+                \\
+                \bf{Error}
+                \\
+                \begin{tabular}{|c|c|}
+                    \hline
+                    $f(x)$ & $g(x)$
+                    \\\hline
+                    $\num[round-precision=5]{0.00471860747464}$ & $\num[round-precision=5]{3.94833443333}$
+                \end{tabular}
+            \end{center}
+    \section{Conclusion}
+        My hypothesis, that the fundamental frequency of the string would increase as the
+        tension of the string increased, was correct. The graph of the data shows
+        a marked upward trend. When there was \SI{0.0}{\N} of force on the string, the
+        fundamental frequency was \SI{0.0}{\hertz}. However, when the tension was increased
+        to \SI{15.0}{\N}, the fundamental frequency increased to \SI{9.3}{\hertz}. Also,
+        given that the data very closely matches the square-root used to model it, and
+        the square root function is a monotonically increasing function, it would be
+        safe to assume that the relationship shown by the data, that the fundamental
+        frequency increases as string tension increases, is true.
+        \\
+        A difficulty I experienced with this lab was keeping the spring scale still
+        while conducting a trial. While I did have it attached to an immobile object,
+        the scale was prone to slippage, and would occasionally slacken the string.
+        This is slightly shown in the data, where there are dips in the fundamental
+        frequency (see \SI{5}{\N} trial 2, \SI{10}{\N} trial 1, \SI{15}{\N} trial 2).
+        However, these errors are not large enough to nullify my conclusion.
+        \\
+        In the future, I would like to be able to conduct more trials, so any errors
+        like the one described above could be ``averaged away'', per se. While the
+        errors in my data were not particularly large, it would have been better to
+        conduct more trials to see exactly where the fundamental frequency was.
+\end{document}

@@ -13,7 +13,7 @@
 }
 
 \title{Investigating Effect of Resistance on the Net Force on a Falling Object}
-\date{5 March 2015}
+\date{3 March 2015}
 \author{Tarik Onalan}
 
 \begin{document}
@@ -70,31 +70,6 @@
         \end{enumerate}
     \section{Data}
         \begin{center}
-            Table 0: Information
-            \\
-            \pgfplotstabletypeset[
-                multicolumn names,
-                col sep=comma,
-                row sep=newline,
-                display columns/0/.style={
-                    column name=Medium,
-                    column type={S},string type},
-                display columns/1/.style={
-                    column name=Density,
-                    column type={S},string type},
-                every head row/.style={
-                    before row={\toprule},
-                    after row={
-                         & \si{\g\per\cm} \\
-                        \midrule}
-                },
-                every last row/.style={after row=\bottomrule}
-            ]{
-                m,d
-                \text{Air},0.001225
-                \text{Water},0.999972
-            }
-            \\\hrulefill\\
             Table 1: Raw Data
             \resizebox{\linewidth}{!}{
                 \pgfplotstabletypeset[
@@ -117,6 +92,9 @@
                         column type={S}, string type},
                     display columns/5/.style={
                         column name=Trial 5,
+                        column type={S}, string type},
+                    display columns/6/.style={
+                        column name=Average,
                         column type={S}, string type},
                     columns/1/.append style={
                         postproc cell content/.append style={

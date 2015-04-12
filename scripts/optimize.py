@@ -4,8 +4,8 @@ import numpy as np
 import scipy.optimize as o
 from os.path import expanduser
 
-set = np.rot90(np.array([row for row in csv.reader(open(expanduser("~/Documents/DATA/iodate_data.csv")))]).astype(np.float), 1)
-fun = lambda k, x: k[0]/(k[1]*x+k[2])+k[3]
+set = np.array([row for row in csv.reader(open(expanduser("~/git/school/2014-2015/Physics/Waves/foobar.csv")))][1:]).astype(np.float)
+fun = lambda k, x: k[0]*np.sqrt(k[1]*x+k[2])+k[3]
 
 def err(k):
     return sum(((fun)(k, set[i][0]) - set[i][4])**2 for i in xrange(len(set)))
