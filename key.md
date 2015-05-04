@@ -3,8 +3,8 @@ __Key for notes/outlines__
 | Key | Value |
 |-----|-------|
 | `->` | to/is/in |
-| `~>` | of/from/through/by |
-| `+>` | [--undecided--] |
+| `~>` | of/from/through/by/with |
+| `+>` | therefore |
 | `=>` | changed to |
 | <code>&#124;></code> | because/for |
 | `!>` | instead/however/did not |
