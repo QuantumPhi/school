@@ -6,9 +6,14 @@
             "file_exclude_patterns":
             [
                 "*.aux",
+                "*.bbl",
+                "*.bcf",
+                "*.blg",
+                "*.dvi",
                 "*.fdb_latexmk",
                 "*.html",
                 "*.log",
+                "*.run.xml",
                 "*.synctex.gz*",
                 "*~"
             ]

@@ -31,8 +31,11 @@ def clean():
     print colored.red("Deleted %d file%s" % (i, "" if i == 1 else "s"))
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-c", "--clean", action="store_true")
+parser.add_argument("-b", action="store_true", help=argparse.SUPPRESS)
+parser.add_argument("-c", action="store_true", help=argparse.SUPPRESS)
 args = parser.parse_args()
 
-if args.clean:
+if args.build:
+    build()
+elif args.clean:
     clean()
