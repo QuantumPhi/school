@@ -1,0 +1,56 @@
+\documentclass[a4paper]{article}
+
+\usepackage[version=3]{mhchem}
+\usepackage{siunitx}
+
+\title{Analyzing the Effectiveness of Various Types of Aspirin}
+\date{9 February 2015}
+\author{Tarik Onalan}
+
+\sisetup{ per-mode=fraction }
+
+\begin{document}
+    \maketitle
+    \section{Price}
+        Cost per gram:
+        \begin{itemize}
+            \item Baby Aspirin: $\frac{\SI{2.99}[\$]{}}{1~pack}\cdot\frac{1~pack}{36~tablets}\cdot\frac{1~tablet}{\SI{81}{\mg}}\cdot\frac{\SI{1000}{\mg}}{\SI{1}{g}}=1.02\frac{\$}{\si{\g}}$
+            \item Normal Aspirin: $\frac{\SI{11.99}[\$]{}}{1~pack}\cdot\frac{1~pack}{300~tablets}\cdot\frac{1~tablet}{\SI{325}{\mg}}\cdot\frac{\SI{1000}{\mg}}{\SI{1}{g}}=0.12\frac{\$}{\si{\g}}$
+        \end{itemize}
+        Cost per tablet:
+        \begin{itemize}
+            \item Baby Aspirin: $\frac{\SI{2.99}[\$]{}}{1 pack}\cdot\frac{1~pack}{36~tablets}=\frac{\SI{0.08}[\$]{}}{1~tablet}$
+            \item Normal Aspirin: $\frac{\SI{2.99}[\$]{}}{1 pack}\cdot\frac{1~pack}{36~tablets}=\frac{\SI{0.04}[\$]{}}{1~tablet}$
+        \end{itemize}
+    \section{Performance}
+        \begin{enumerate}
+            \item We used \SI{4.5}{\ml} and \SI{16.5}{\ml} of base to titrate the baby and normal aspirin, respectively.
+            \begin{itemize}
+                \item Baby Aspirin: $\SI{4.5}{\ml}\cdot\SI{1}{\g\per\ml}\cdot\SI{0.001}{\ml\per\l}\cdot\SI{0.02}{\mol\per\g}=\SI{0.00009}{\mol}$
+                \item Normal Aspirin: $\SI{16.5}{\ml}\cdot\SI{1}{\g\per\ml}\cdot\SI{0.001}{\ml\per\l}\cdot\SI{0.02}{\mol\per\g}=\SI{0.00033}{\mol}$
+            \end{itemize}
+            \item Baby aspirin neutralized \SI{0.09}{\mol} of \ce{OH-}, while normal aspirin neutralized \SI{0.33}{\mol}
+            of \ce{OH-}. (See above list for calculations)
+            \item The number of moles of \ce{H+} is equal to the number of moles of \ce{OH-} required to titrate the
+            solution. If the number of moles of \ce{H+} were equal to the number of moles of acid, then the mass of 
+            tablets would be:
+            \begin{itemize}
+                \item Baby Aspirin: $\SI{0.00009}{\mol}\cdot\SI{180.157}{\g\per\mol}=\SI{0.0162}{\g}=\SI{16.2}{\g}$
+                \item Normal Aspirin: $\SI{0.00033}{\mol}\cdot\SI{180.157}{\g\per\mol}=\SI{0.0595}{\g}=\SI{59.5}{\g}$
+            \end{itemize}
+            \item The actual masses of the tablets should be \SI{81}{\mg} and \SI{325}{\mg} for the baby and normal aspirins,
+            respectively. The differences between the actual masses and the calculated masses arises from the fact that
+            the tablet is not purely acetylsalicylic acid. There are other compounds in the tablet that contribute to its
+            mass.
+        \end{enumerate}
+    \section{Conclusion}
+        \begin{enumerate}
+            \item The baby aspirin costs $2$ times as much as normal aspirin per tablet and $8.5$ times as much per gram.
+            \item I would buy normal aspirin because it is cheaper both per tablet and per gram.
+            \item The biggest source of error in the lab was the fact that there were pieces of tablet that did not dissolve,
+            possibly skewing titration results.
+            \item As the active ingredient of aspirin is an acid, it can cause gastrointestinal irritation and/or bleeding
+            if it concentrates on the stomach wall, etc. However, its blood-thinning effects are useful for people who
+            have a high risk of clotting.
+        \end{enumerate}
+\end{document}

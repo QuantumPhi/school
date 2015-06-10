@@ -112,6 +112,8 @@ sympy-plots-for-*.tex/
 # xindy
 *.xdy
 
-## Cache Files
+## Temporary Files
 *.dat
+*.html
+*.sublime-workspace
 *~

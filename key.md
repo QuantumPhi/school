@@ -1,5 +1,3 @@
-__Key for notes/outlines__
-
 | Key | Value |
 |-----|-------|
 | `->` | to/is/in |
@@ -10,8 +8,10 @@ __Key for notes/outlines__
 | `!>` | instead/however/did not |
 | `?>` | if/possibly |
 | `#>` | example |
-| `~` | approximately |
 | `+` | increase/and |
 | `-` | decrease |
 | `=` | equals |
+| `~[]` | approximately |
 | `![]` | not |
+| `?[]` | question |
+| `+?` | etc. |
