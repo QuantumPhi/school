@@ -13,6 +13,7 @@
                 "*.fdb_latexmk",
                 "*.html",
                 "*.log",
+                "*.out",
                 "*.run.xml",
                 "*.synctex.gz*",
                 "*~"

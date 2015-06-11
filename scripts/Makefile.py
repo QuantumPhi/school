@@ -22,8 +22,9 @@ def build(id):
     
 def clean():
     i = 0
-    for ext in open(".gitignore"):
-        m = match_files(id=ext.strip(), dir=[".git"], file=["*.sublime-workspace"])
+    ignored = ["*.aux","*.lof","*.log","*.lot","*.fls","*.out","*.toc","*.dvi","*.bbl","*.bcf","*.blg","*-blx.aux","*-blx.bib","*.brf","*.run.xml","*.fdb_latexmk","*.synctex.gz*","*.idx","*.html","*~"]
+    for pattern in ignored:
+        m = match_files(id=pattern, dir=[".git/"], file=[])
         for n in m:
             print "%s %s" % (colored.yellow("Deleted:"), n)
             os.remove(n)
@@ -35,7 +36,7 @@ parser.add_argument("-b", action="store_true", help=argparse.SUPPRESS)
 parser.add_argument("-c", action="store_true", help=argparse.SUPPRESS)
 args = parser.parse_args()
 
-if args.build:
+if args.b:
     build()
-elif args.clean:
+elif args.c:
     clean()
