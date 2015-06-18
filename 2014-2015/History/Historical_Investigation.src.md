@@ -7,10 +7,8 @@
 * Cultural imperialism and exact sciences: German expansion overseas, 1900-1930: Lewis Pyenson
 * German expansionism, imperial liberalism and the United States, 1776-1945: Jens-Uwe Guettel
 * The propaganda warriors : America's crusade against Nazi Germany: Clayton D. Laurie
-* The Manhattan Project : a documentary introduction to the Atomic Age: Michael B. Stoff
-* Emigration and political development: Johnathon W. Moses
+* The Manhattan Project : a documentary introduction to the Atomic Age: Michael B. Stoff, et. al
 * Fascist ideology : territory and expansionism in Italy and Germany, 1922-1945: Aristotle A. Kallis
-* Jewish immigrants of the Nazi period in the U.S.A.: Herbert A. Strauss
 
 ### Journals:
 * [German Propaganda Instructions of 1933](http://www.jstor.org/stable/40981833): Ernst Kris

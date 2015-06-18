@@ -1,0 +1,47 @@
+%!TEX program = xelatex
+
+\documentclass[a4paper,twocolumn]{article}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage[backend=biber]{biblatex}
+\usepackage[autostyle]{csquotes}
+\usepackage{fontenc}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\title{Investigating Fourier's Heat Equation\\$\frac{\partial{u}}{\partial{t}}-\alpha\nabla^{2}u=0$}
+\date{June 2015}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \tableofcontents
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{Introduction}
+    \addcontentsline{toc}{section}{Introduction}
+
+        The heat equation is used to describe the distribution of heat in an object over time. While
+        not introduced by Fourier, it is a method for solving the equation proposed by Fourier in
+        his \textit{Théorie analytique de la chaleur}---translated as ``an analytical theory of
+        heat''---that we will be investigating. I chose to investigate Fourier's solution to the heat
+        equation because it is through his solution that the Fourier Transform, a popular tool in signal
+        processing, was defined. I frequently use the Fourier Transform while doing data analysis, and I
+        wanted to learn how and why it was created.
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{Proof}
+    \addcontentsline{toc}{section}{Proof}
+
+        \subsection{Visual Proof}
+
+
+    \printbibliography
+\end{document}
