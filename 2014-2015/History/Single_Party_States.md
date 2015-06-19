@@ -9,7 +9,7 @@ __RUSSIAN TRADITIONS__
 - Women's roles: take care of themselves, look best, "mysterious Russian soul," family values, traditional outlook on life, housewife/mother, family priority, patriarchy, always maintain relationship, passion/romance
 - Men's roles: not letting others hurt themselves or family, physically challenging attackers, protect weak, don't display weakness, protect family, "stone wall", gentle/romantic/open, build career, head of family, masculine pursuits
 - divisions of power within government were traditional (e.g. no total authority to anyone)---http://www.jstor.org/stable/127227
-- connections (*svyazi*) and patronage/protection (*protektsiya*) were important in the daily lives of soviet citizens (http://www.jstor.org/stable/151472) pg. 4)
+- connections (*svyazi*) and patronage/protection (*protektsiya*) were important in the daily lives of soviet citizens (http://www.jstor.org/stable/151472) pg. 4
 
 __STALIN THE REVOLUTIONARY:__
 
@@ -251,7 +251,7 @@ TERMS:
 [*Early Provincial Cliques and the Rise of Stalin*](http://www.jstor.org/stable/151472)
 
 - major factors in Stalin's rise to dominance: his ability to build up a substantial following in his party, skill at the tactical power game, and ability to project policies in the interests of wide circles of the party (3)
-- patronage/clientelist relationships were prominent in the soviet government--significant aspect of the government that stalin inherited (4-5)
+- patronage/clientelist relationships were prominent in the soviet government--significant aspect of the government that Stalin inherited (4-5)
     - Lenin appointed two former close advisors V. D. Bonch-Bruevich his Head of Chancery and L. A. Fotieva his principle secretary (6)
     - Party secretary Sverdlov appointed his wife K. T. Novgorodtseva as one of his principal assistants (7)
     - Lenin's wife Nadezhda Krupskaya was the Deputy People's Commissar of Education, his sister Anna also represented the Education Commissariat, and his brother-in-law M. T. Elizarov was Acting People's Commissar of Railways (7)
@@ -266,7 +266,7 @@ TERMS:
 
 - Stalin `->` inject Russian tradition `->` Marxism (23)
 - books `->` personal library `->` mostly communism-related `#>` Marx, Lenin, Trotsky (24)
-- ![interested] `->` traditional Russian systems `~>` thought `!>` heavy-handed policies `~>` tsars, etc. (26)
+- \![interested] `->` traditional Russian systems `~>` thought `!>` heavy-handed policies `~>` tsars, etc. (26)
 - Stalin `->` serious `->` public claims `~>` Marxism (27)
 - attach [importance +] `->` working-class support (29)
 - [nothing good `->` "bourgeois" state] `->` orthodox Marxist (29)
@@ -352,7 +352,7 @@ __FORMAT:__
 - Extent of following ideology: (1 per paragraph), explain how much follow, state WHY
 - Works cited
 - __Title PAGE:__
-    - Vert.+Horiz.-centred
+    - Vert.`+`Horiz.-centred
     - Research question. 12 pt/bold
     - Name
     - "Interlake High School"

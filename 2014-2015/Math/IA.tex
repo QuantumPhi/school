@@ -1,21 +1,32 @@
 %!TEX program = xelatex
 
-\documentclass[a4paper,twocolumn]{article}
+\documentclass[a4paper]{article}
 
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
 
+\usepackage{amsmath}
 \usepackage[backend=biber]{biblatex}
 \usepackage[autostyle]{csquotes}
 \usepackage{fontenc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{parskip}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-\title{Investigating Fourier's Heat Equation\\$\frac{\partial{u}}{\partial{t}}-\alpha\nabla^{2}u=0$}
+\addbibresource{./IA.bib}
+\everymath{\displaystyle}
+
+\title{Investigating Fourier's Solution to the Heat Equation\\$\frac{\partial{u}}{\partial{t}}-\alpha\nabla^{2}u=0$}
 \date{June 2015}
 \author{Tarik Onalan}
 
 \begin{document}
+    \input{./IA.title.tex}
+    
+    %--------------------------------------------------------------------------------------------------%
+
     \maketitle
 
     %--------------------------------------------------------------------------------------------------%
@@ -25,7 +36,6 @@
     %--------------------------------------------------------------------------------------------------%
 
     \section{Introduction}
-    \addcontentsline{toc}{section}{Introduction}
 
         The heat equation is used to describe the distribution of heat in an object over time. While
         not introduced by Fourier, it is a method for solving the equation proposed by Fourier in
@@ -35,13 +45,239 @@
         processing, was defined. I frequently use the Fourier Transform while doing data analysis, and I
         wanted to learn how and why it was created.
 
+        \begin{center}
+            \includegraphics{./heat_eq.png}
+        \end{center}
+
     %--------------------------------------------------------------------------------------------------%
 
-    \section{Proof}
-    \addcontentsline{toc}{section}{Proof}
+    \section{Solution}
+        \subsection{Defining the heat equation}
+            The heat equation (as defined in a rod) is as follows:
+            \begin{equation}
+                u_{t} = \alpha u_{xx}
+            \end{equation}
+            where $u = u\left(x,t\right)$ is a function of two variables $x$ and $t$.
+            \begin{itemize}
+                \item $x$: position, where $x \in [0,L]$ and $L$ is the length of the rod
+                \item $t$: time, where $t\geq0$
+            \end{itemize}
+            assuming the initial condition
+            \begin{equation}
+                u\left(x,0\right) = f\left(x\right) \quad \forall x \in [0,L]
+            \end{equation}
+            and the following boundary conditions
+            \begin{equation}
+                u\left(0,t\right) = 0 = u\left(L,t\right) \quad \forall t > 0
+            \end{equation}
 
-        \subsection{Visual Proof}
+            \begin{center}
+                \includegraphics{./temp_dist.png}
+            \end{center}
 
+        \subsection{Our objective}
+            We are looking for nontrivial solutions to to $\left(1\right)$ that satisfy the conditions defined by
+            equations $\left(2\right)$ and $\left(3\right)$. We still need more information, however. Let us look at equation
+            $\left(1\right)$ again:
+            \[
+                u_{t} = \alpha u_{xx}
+            \]
+            We can rearrange this equation so that it appears as follows:
+            \[
+                u_{t} - \alpha u_{xx} = 0
+            \]
+            What does this mean? The equation is a linear homogeneous partial differential equation,
+            meaning that $u$ can be written as the product
+            \begin{equation}
+                u\left(x,t\right)=X\left(x\right)T\left(t\right)
+            \end{equation}
+            through separation of variables.
 
+        \subsection{Solving the constituent equations $T\left(t\right)$ and $X\left(x\right)$}
+            \[
+                \begin{cases}
+                    u_{t} = X\left(x\right)T'\left(t\right) \\
+                    u_{xx} = X''\left(x\right)T\left(t\right) \\
+                \end{cases}
+            \]
+            \\
+            \[
+                X\left(x\right)T'\left(t\right) = \alpha X''\left(x\right)T\left(t\right) \\
+            \]
+            \[
+                \frac{T'\left(t\right)}{\alpha T\left(t\right)} = \frac{X''\left(x\right)}{X\left(x\right)}
+            \]
+            One thing to notice at this point is that both sides, though dependent on two independent
+            variables, are equivalent. This means that both are equal to some constant that we will
+            call $-\lambda$ (the negative is for simplicity later on).
+
+            Now we have the following:
+            \[
+                \frac{T'\left(t\right)}{\alpha T\left(t\right)} = \frac{X''\left(x\right)}{X\left(x\right)} = -\lambda
+            \]
+            \[
+                \begin{cases}
+                    \frac{T'\left(t\right)}{\alpha T\left(t\right)} = -\lambda \\
+                    \frac{X''\left(x\right)}{X\left(x\right)} = -\lambda
+                \end{cases}
+            \]
+            Let us take the first equation, $\frac{T'\left(t\right)}{\alpha T\left(t\right)} = -\lambda$:
+            \[
+                \frac{1}{T\left(t\right)}\cdot\frac{dT}{dt} = -\lambda \alpha
+            \]
+            \[
+                \int{\frac{1}{T\left(t\right)}}dT = -\int{\lambda \alpha}dt
+            \]
+            \[
+                \ln{T\left(t\right)} + K_1= -\lambda \alpha t + K_2
+            \]
+            \[
+                T\left(t\right) = e^{-\lambda \alpha t + K}
+            \]
+            \begin{equation}
+                T\left(t\right) = A e^{-\lambda \alpha t}
+            \end{equation}
+            Now let us take the second equation, $\frac{X''\left(x\right)}{X\left(x\right)} = -\lambda$
+            \[
+                \frac{d^{2}X}{dx^{2}} = -\lambda X\left(x\right)
+            \]
+            This may seem daunting at first, but let us quickly observe a few things about this
+            differential equation:
+            \begin{itemize}
+                \item Derived twice, it has a coefficient $-\lambda$
+                \item Derived twice, it is still the same basic function
+            \end{itemize}
+            The latter point is very interesting. Only one other function remains the same after
+            deriving: $e^{x}$. We have found the characteristic function for $X\left(x\right)$. All that remains
+            is calculating the coefficients ($a$, in this case):
+            \[
+                \frac{d^{2} e^{ax}}{dx^{2}} = -\lambda e^{ax}
+            \]
+            \[
+                a^{2} e^{ax} + \lambda e^{ax} = 0
+            \]
+            \[
+                e^{ax}\left(a^{2} + \lambda\right) = 0
+            \]
+            Given that $e^{ax} \neq 0$:
+            \[
+                a^{2} + \lambda = 0
+            \]
+            \[
+                a = \pm\sqrt{-\lambda}
+            \]
+            Therefore,
+            \[
+                X\left(x\right) = \sum_{b \in a}{B e^{bx}}
+            \]
+            \begin{equation}
+                X\left(x\right) = B e^{\sqrt{-\lambda}x} + C e^{-\sqrt{-\lambda}x}
+            \end{equation}
+
+        \subsection{Limiting $\lambda$ to nontrivial solutions}
+            Let us begin with $\lambda < 0$, and consider equation $\left(6\right)$:
+            \[
+                X\left(x\right) = B e^{\sqrt{\lambda}x} + C e^{-\sqrt{\lambda}x}
+            \]
+            Now, let us consider the boundary condition defined by equation $\left(3\right)$:
+            \[
+                X\left(0\right) = 0 = B e^{\sqrt{\lambda} \cdot 0} + C e^{-\sqrt{\lambda} \cdot 0}
+            \]
+            \[
+                X\left(0\right) = 0 = B e^{0} + C e^{0}
+            \]
+            Which would mean that $B = 0 = C$, a trivial solution.
+            
+            Now let us consider $\lambda = 0$, again with equation $\left(6\right)$:
+            \[
+                X\left(0\right) = 0 = B e^{\sqrt{0}x} + C e^{-\sqrt{0}x}
+            \]
+            \[
+                X\left(0\right) = 0 = B e^{0} + C e^{0}
+            \]
+            Which would again mean that $B = 0 = C$.
+
+            Thus, $\lambda > 0$. With this knowledge, we can make a couple of changes to equation $\left(6\right)$
+            using Euler's formula:
+            \[
+                X\left(x\right) = B e^{i\sqrt{\lambda} x} + C e^{-i\sqrt{\lambda} x}
+            \]
+            This is where $-\lambda$ becomes preferable to $\lambda$, as it only becomes possible to use Euler's
+            formula on the exponent when it is $\sqrt{-\lambda} x$, as we can factor out an $i$ and make it a
+            complex number. The expansion of the above equation yields
+            \[
+                X\left(x\right) = B\left(\cos{\left(\sqrt\lambda x\right)} + i\sin{\left(\sqrt\lambda x\right)}\right) + C\left(\cos{\left(\sqrt\lambda x\right)} - i\sin{\left(\sqrt\lambda x\right)}\right)
+            \]
+            Grouping like terms results in the equation
+            \[
+                X\left(x\right) = B\sin{\left(\sqrt\lambda x\right)} + C\cos{\left(\sqrt\lambda x\right)}
+            \]
+            From there, solving for the boundary conditions defined in equation $\left(3\right)$ yields:
+            \[
+                X\left(0\right) = 0 = B\sin{\left(\sqrt\lambda \cdot 0\right)} + C\cos{\left(\sqrt\lambda \cdot 0\right)}
+            \]
+            \[
+                X\left(0\right) = 0 = B\sin{0} + C\cos{0}
+            \]
+            Which means that $C = 0$. However, another piece of information can be gained from
+            this. If we look closely at the following equation, given $C = 0$:
+            \[
+                X\left(L\right) = 0 = B\sin{\left(\sqrt\lambda \cdot L\right)}
+            \]
+            We can see that we can calculate possible values for $\sqrt\lambda$
+            \[
+                \sin{\left(\sqrt\lambda \cdot L\right)} = 0
+            \]
+            \[
+                \sqrt\lambda = \frac{n \pi}{L}
+            \]
+
+        \subsection{Finishing the proof}
+            Now that $\lambda$ is defined, we can apply it to our functions $X\left(x\right)$ and $T\left(t\right)$
+            \[
+                \begin{cases}
+                    X\left(x\right) = B \sin\left(\frac{n \pi x}{L}\right) \\
+                    T\left(t\right) = A e^{-\frac{n^{2} \pi^{2} \alpha t}{L^{2}}}
+                \end{cases}
+            \]
+            We can now apply this to equation $\left(4\right)$, yielding the particular solution
+            \[
+                u_{par}\left(x,t\right) = B_{n} \sin\left(\frac{n \pi x}{L}\right) \cdot e^{-\frac{n^{2} \pi^{2} \alpha t}{L^{2}}}
+            \]
+            Computing the summation of $u_{par}$ for all $n$ yields the general solution
+            \[
+                u\left(x,t\right) = \sum_{n=1}^{\infty}{u_{par}}
+            \]
+            \[
+                u\left(x,t\right) = \sum_{n=1}^{\infty}{B_{n} \sin\left(\frac{n \pi x}{L}\right) \cdot e^{-\frac{n^{2} \pi^{2} \alpha t}{L^{2}}}}
+            \]
+            Let us now solve for the initial condition stated in equation $\left(2\right)$
+            \[
+                u\left(x,0\right) = \sum_{n=1}^{\infty}{B_{n} \sin\left(\frac{n \pi x}{L}\right) \cdot e^{-\frac{n^{2} \pi^{2} \alpha 0}{L^{2}}}}
+            \]
+            \[
+                u\left(x,0\right) = \sum_{n=1}^{\infty}{B_{n} \sin\left(\frac{n \pi x}{L}\right) \cdot e^{0}}
+            \]
+            \[
+                u\left(x,0\right) = \sum_{n=1}^{\infty}{B_{n} \sin\left(\frac{n \pi x}{L}\right)}
+            \]
+            By the definition of the Fourier Transform, we can now define $B_{n}$
+            \[
+                B_{n} = \frac{2}{L} \int_{0}^{L}{f\left(x\right) \sin\left(\frac{n \pi x}{L}\right)} dx
+            \]
+            and solve for $u\left(x,t\right)$, finishing the problem
+            \[
+                u\left(x,t\right) = \sum_{n=1}^{\infty}{\frac{2}{L} \left(\int_{0}^{L}{f\left(x\right) \sin\left(\frac{n \pi x}{L}\right)} dx\right) \sin\left(\frac{n \pi x}{L}\right) \cdot e^{-\frac{n^{2} \pi^{2} \alpha t}{L^{2}}}}
+            \]
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{Reflection}
+
+        \vfill
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \nocite{fourierj}
     \printbibliography
 \end{document}

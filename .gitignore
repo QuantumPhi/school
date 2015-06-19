@@ -112,6 +112,9 @@ sympy-plots-for-*.tex/
 # xindy
 *.xdy
 
+## Build Files
+build/
+
 ## Temporary Files
 *.dat
 *.html
