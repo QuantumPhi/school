@@ -116,7 +116,6 @@ sympy-plots-for-*.tex/
 build/
 
 ## Temporary Files
-*.dat
 *.html
 *.sublime-workspace
 *~

@@ -1,0 +1,551 @@
+\documentclass[aip,jmp,amsmath,amssymb,reprint,author-numerical]{revtex4-1}
+
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{siunitx}
+
+\begin{document}
+    \title[Addition of a Magnet to Newton's Cradle]{Addition of a Magnet to Newton's Cradle}
+
+    \author{Tarik Onalan}
+    \affiliation{Physics Department, SCHOOL, LOCATION, PLANET EARTH}
+
+    \date{22 June 2015}
+
+    \begin{abstract}
+        Newton's Cradle is commonly used to demonstrate the conservation of momentum and energy;
+        provided there is no outside influence on the system, an ideal Newton's Cradle can continue
+        moving indefinitely. However, in reality, this is not the case. Energy is always lost to an
+        outside force---friction---in an imperfect system, which is why there are no perpetual motion
+        machines of the third kind in existence. In this paper, we investigate the opposite phenomenon;
+        the effect of adding energy to a Newton's Cradle.
+    \end{abstract}
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \maketitle
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{\label{sec:intro}Introduction}
+
+        Putting a magnet into a Newton's Cradle provides a way to add energy to the system. In this
+        paper, we will compare the results of various different experiments: changing the number of
+        balls in a standard Newton's Cradle, changing the beginning height in a standard Newton's
+        Cradle, changing the number of balls in a Newton's Cradle with a magnet, and changing the
+        beginning height in a Newton's Cradle with a magnet.
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{\label{sec:theory}Theory}
+
+        Let us define the relevant equations in a standard Newton's Cradle:
+        \begin{equation}
+            F_{net}=m(a-\mu g)
+        \end{equation}
+        \begin{equation}
+            p=mv
+        \end{equation}
+        \begin{equation}
+            KE=\frac{1}{2}mv^2
+        \end{equation}
+        \begin{equation}
+            PE=mgh
+        \end{equation}
+        \begin{equation}
+            m_{1}v_{1}=m_{2}v_{2}
+        \end{equation}
+        \begin{equation}
+            KE_{1}+PE_{1}=KE_{2}+PE_{2}
+        \end{equation}
+
+        These are all standard equations, taught in physics classes in schools. However, we are not
+        just investigating a standard Newton's Cradle; we are also observing how adding energy through
+        a magnet affects the system. In that case, let us define the additional equations we will need
+        for the system:
+        \begin{equation}
+            F=\frac{\mu q_{m1}q_{m2}}{4\pi r^2}
+        \end{equation}
+
+        Our approximate equation for the force in a Newton's Cradle with a magnet is then the following:
+        \begin{equation}
+            F_{net}=m(a-\mu g) + \frac{\mu q_{m1}q_{m2}}{4\pi r^2}
+        \end{equation}
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{\label{sec:expset}Experimental Setup}
+
+        \resizebox{\linewidth}{!}{
+            \includegraphics{./figure.png}
+        }
+
+        We will investigate the following experiments:
+        \begin{enumerate}
+            \item How does the starting height of the ball bearing in the standard Newton's cradle
+                affect the energy of the system?
+            \item How does changing the amount of standing ball bearings in the standard Newton's cradle
+                affect the energy of the system?
+            \item How does changing the starting height of the magnet in the ``magnetic'' Newton's
+                cradle affect the energy of the system?
+            \item How does changing the amount of standing ball bearings in the ``magnetic'' Newton's
+                cradle affect the energy of the system?
+        \end{enumerate}
+
+        For experiments $(1)$ and $(3)$, the setup is rather similar. In experiment $(1)$, the ball
+        bearing will be dropped from varying heights, and the energy of the rebounding ball bearing
+        will be measured; experiment $(3)$ will only see the dropped ball bearing replaced by a
+        spherical neodymium magnet.
+
+        Experiments $(2)$ and $(4)$ also have similar setups. In experiment $(2)$, the number of ball
+        bearings between the dropped ball bearing and the rebounding ball bearing (at the end of the
+        stack), will be changed. The ball bearings will be kept in place before collision by a pair of
+        toothpicks. In experiment $(4)$, the dropped ball bearing is again replaced by a spherical
+        neodymium magnet.
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{\label{sec:result}Results and Data Analysis}
+
+        \begin{center}
+            Table 1: Standard Cradle, Changing Height
+            \resizebox{\linewidth}{!}{
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=Height,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=Trial 1,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=Trial 2,
+                        column type={S},string type},
+                    display columns/3/.style={
+                        column name=Trial 3,
+                        column type={S}, string type},
+                    display columns/4/.style={
+                        column name=Trial 4,
+                        column type={S}, string type},
+                    display columns/5/.style={
+                        column name=Trial 5,
+                        column type={S}, string type},
+                    display columns/6/.style={
+                        column name=Average,
+                        column type={S}, string type},
+                    columns/1/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/2/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/3/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/4/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/5/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/avg/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\cm & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule\\
+                            \midrule}
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{height_standard.dat}
+            }
+            \\[0.5cm]
+            Table 2: Standard Cradle, Changing Standing Bearings
+            \resizebox{\linewidth}{!}{
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=Height,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=Trial 1,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=Trial 2,
+                        column type={S},string type},
+                    display columns/3/.style={
+                        column name=Trial 3,
+                        column type={S}, string type},
+                    display columns/4/.style={
+                        column name=Trial 4,
+                        column type={S}, string type},
+                    display columns/5/.style={
+                        column name=Trial 5,
+                        column type={S}, string type},
+                    display columns/6/.style={
+                        column name=Average,
+                        column type={S}, string type},
+                    columns/1/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/2/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/3/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/4/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/5/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/avg/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\cm & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule\\
+                            \midrule}
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{bearings_standard.dat}
+            }
+            \\[0.5cm]
+            Table 3: Magnetic Cradle, Changing Height
+            \resizebox{\linewidth}{!}{
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=Height,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=Trial 1,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=Trial 2,
+                        column type={S},string type},
+                    display columns/3/.style={
+                        column name=Trial 3,
+                        column type={S}, string type},
+                    display columns/4/.style={
+                        column name=Trial 4,
+                        column type={S}, string type},
+                    display columns/5/.style={
+                        column name=Trial 5,
+                        column type={S}, string type},
+                    display columns/6/.style={
+                        column name=Average,
+                        column type={S}, string type},
+                    columns/1/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/2/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/3/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/4/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/5/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/avg/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\cm & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule\\
+                            \midrule}
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{height_magnet.dat}
+            }
+            \\[0.5cm]
+            Table 4: Magnetic Cradle, Changing Standing Bearings
+            \resizebox{\linewidth}{!}{
+                \pgfplotstabletypeset[
+                    multicolumn names,
+                    col sep=comma,
+                    display columns/0/.style={
+                        column name=Height,
+                        column type={S},string type},
+                    display columns/1/.style={
+                        column name=Trial 1,
+                        column type={S},string type},
+                    display columns/2/.style={
+                        column name=Trial 2,
+                        column type={S},string type},
+                    display columns/3/.style={
+                        column name=Trial 3,
+                        column type={S}, string type},
+                    display columns/4/.style={
+                        column name=Trial 4,
+                        column type={S}, string type},
+                    display columns/5/.style={
+                        column name=Trial 5,
+                        column type={S}, string type},
+                    display columns/6/.style={
+                        column name=Average,
+                        column type={S}, string type},
+                    columns/1/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                        }
+                    },
+                    columns/2/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/3/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/4/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/5/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    columns/avg/.append style={
+                        postproc cell content/.append style={
+                            /pgfplots/table/@cell content/.add={}{$\pm0.001$}
+                        }
+                    },
+                    every head row/.style={
+                        before row={\toprule},
+                        after row={
+                            \si\cm & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule & \si\joule\\
+                            \midrule}
+                    },
+                    every last row/.style={after row=\bottomrule}
+                ]{bearings_magnet.dat}
+            }
+        \end{center}
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Energy Relative to Starting Height (Standard)},
+                xlabel={Height [\si\cm]},
+                ylabel={Energy [\si\joule]},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot [
+                    color=blue,
+                    only marks,
+                    mark=*
+                ] plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x fixed=0.05,
+                        y fixed=0.001
+                ] table [
+                    x=h,
+                    y=e_avg,
+                    col sep=comma
+                ]{height_standard.dat};
+
+                \addplot [thick, red] table [y={create col/linear regression={y=e_avg}},col sep=comma]{height_standard.dat};
+
+                \addlegendentry{Average}
+                \addlegendentry{$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+            \end{axis}
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Energy Relative to Standing Bearings (Standard)},
+                xlabel={Bearings},
+                ylabel={Energy [\si\joule]},
+                xtick={0,1,...,3},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot [
+                    color=blue,
+                    only marks,
+                    mark=*
+                ] plot [
+                    error bars/.cd,
+                        y dir=both,
+                        y fixed=0.001
+                ] table [
+                    x=n,
+                    y=e_avg,
+                    col sep=comma
+                ]{bearings_standard.dat};
+
+                \addplot [thick, red] table [y={create col/linear regression={y=e_avg}},col sep=comma]{bearings_standard.dat};
+
+                \addlegendentry{Average}
+                \addlegendentry{$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+            \end{axis}
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Energy Relative to Starting Height (Magnetic)},
+                xlabel={Height [\si\cm]},
+                ylabel={Energy [\si\joule]},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot [
+                    color=blue,
+                    only marks,
+                    mark=*
+                ] plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x fixed=0.05,
+                        y fixed=0.001
+                ] table [
+                    x=h,
+                    y=e_avg,
+                    col sep=comma
+                ]{height_magnet.dat};
+
+                \addplot [thick, red] table [y={create col/linear regression={y=e_avg}},col sep=comma]{height_magnet.dat};
+
+                \addlegendentry{Average}
+                \addlegendentry{$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+            \end{axis}
+        \end{tikzpicture}
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Energy Relative to Standing Bearings (Magnetic)},
+                xlabel={Bearings},
+                ylabel={Energy [\si\joule]},
+                xtick={0,1,...,3},
+                legend pos=north west,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot [
+                    color=blue,
+                    only marks,
+                    mark=*
+                ] plot [
+                    error bars/.cd,
+                        y dir=both,
+                        y fixed=0.001
+                ] table [
+                    x=n,
+                    y=e_avg,
+                    col sep=comma
+                ]{bearings_magnet.dat};
+
+                \addplot [thick, red] table [y={create col/linear regression={y=e_avg}},col sep=comma]{bearings_magnet.dat};
+
+                \addlegendentry{Average}
+                \addlegendentry{$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+            \end{axis}
+        \end{tikzpicture}
+
+        Above are all of the data that I collected. It immediately becomes clear that the Newton's
+        Cradle with a magnet has more energy than the standard Newton's Cradle.  A couple of
+        interesting trends in the data can be seen. As the number of standing ball-bearings in the
+        Newton's Cradle (with the magnet) increases, the ending energy of the rebounding ball also
+        increases.
+
+        This can be explained using equation $(7)$; as the number of standing ball bearings increases,
+        the distance between the magnet and the rebounding ball bearing also increases. Magnetic force
+        roughly follows the inverse-square law, meaning that as the distance between the objects
+        increases, the force will decrease. Also important to note is the fact that the normal ball
+        bearing is paramagnetic, meaning that its magnetic field will be proportional to the magnetic
+        field strength at a given point. We can then observe that there are two terms in equation $(7)$
+        with inverse correlation to the distance between the magnet and the ball bearing: $r$ and
+        $q_{m2}$ (the magnetic field strength of the ball bearing). Knowing all this, we can see that
+        the ``pulling'' force exerted on the rebounding ball bearing will be less as the number of
+        ball bearings increases, as the distance between the ball bearing and the magnet will increase.
+
+        Another interesting trend is that while the energy of the rebounding ball bearing is higher with
+        the magnet, the height only slightly correlates with the energy of the rebounding bearing.
+        The correlation is much more pronounced in the standard Newton's Cradle, where the starting
+        height is the only source of energy for the system, but with a magnet, there is another force
+        acting on the system that compensates for the lack of starting height.
+
+    %--------------------------------------------------------------------------------------------------%
+
+    \section{\label{sec:concl}Conclusion}
+
+        Through the four experiments, we can conclude the following:
+
+        \begin{itemize}
+            \item putting a magnet in a Newton's Cradle adds energy to the system
+            \item the energy of the rebounding ball in the magnet-based Newton's Cradle is slightly
+                dependent on the starting height
+            \item the energy of the rebounding ball in the magnet-based Newton's Cradle is dependent
+                on the number of standing ball-bearings between the magnet and the rebounding ball at
+                collision
+        \end{itemize}
+
+        While these conclusions are supported by experimental evidence, I found that in my calculations
+        I did not have enough information to construct a meaningful model of the data, which is why I
+        chose to adhere to a linear model for my graphs. So yes; there is a correlation between adding
+        a magnet, starting height, and magnet separation to the final energy in a Newton's Cradle;
+        however, further experimentation is required to determine the type of correlation (linear,
+        square, logarithmic, etc.).
+
+\end{document}
