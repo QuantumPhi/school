@@ -1,0 +1,343 @@
+%!TEX program = xelatex
+
+\documentclass{comjnl}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\usepackage{amsmath}
+\usepackage[backend=biber]{biblatex}
+\usepackage[autostyle]{csquotes}
+\usepackage{dsfont}
+\usepackage{fontenc}
+\usepackage{hyperref}
+\usepackage{tikz}
+
+\def\abs#1{\left| #1 \right|}
+\def\mag#1{\left\parallel #1 \right\parallel}
+\DeclareMathOperator*{\argmax}{\arg\!\max}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+
+\addbibresource{./EE.bib}
+
+\numberwithin{equation}{subsection}
+
+\begin{document}
+
+    \title{Applications and Development of Machine Learning}
+    \author{Tarik Onalan}
+    \affiliation{SCHOOL, PLANET EARTH}
+
+    \shortauthors{T. Onalan}
+
+    \begin{abstract}
+
+        In the last decade, machine learning has taken centre stage in the computing field. With the
+        advent of increasingly powerful computers, giga-, tera-, and even peta-scale computations have
+        become possible. In this paper, we will investigate the applications of machine learning in
+        these large-scale computations---big data---and how they can affect future development.
+
+    \end{abstract}
+
+    \maketitle
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Introduction}
+        
+        The term ``Machine Learning'' was coined in 1959 by Arthur Samuel, in his paper \textit{Some
+        studies in machine learning using the game of checkers}, described as ``a field
+        of study that gives computers the ability to learn without being explicitly programmed''. The
+        definition still holds, but machine learning, as a science, is now leaps and bounds ahead of
+        where it was in 1959. Computers are now capable of analyzing giga- and tera-scale sets of data
+        in hours or minutes instead of days, weeks, or even months or years.
+
+        It is essentially impossible to understand big data without machine learning. The computational
+        power required to parse and analyze modern data-sets is well beyond the power of all human minds
+        ever to be created. With computers, however, we can run calculations faster and with higher
+        precision than any human ever could.
+
+        The applications of machine learning are vast, spanning from health care, to finance, to social
+        media. Anywhere where there is a large pool of data to be analyzed, machine learning becomes a
+        viable option.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Learning Methods}\label{sec:learn}
+
+        \subsection{Supervised Learning}\label{sec:sup}
+
+            Supervised learning is achieved by training a model by optimizing it to fit a set of
+            input-output pairs. Given a set of inputs and outputs $\{(x_1,y_1),...,(x_n,y_n)\}$,
+            the model that is being trained will seek a function $h : X \to Y$, where $X$ is the
+            input and $Y$ is the output. The key fact to remember with this learning method is that
+            there is an expected output for every input against which the model's predictions can be
+            compared and tuned.
+
+        \subsection{Unsupervised Learning}\label{sec:unsup}
+
+            Unsupervised learning is, as the name suggests, the opposite of supervised learning.
+            Instead of constructing a model from input-output pairs, unsupervised learning consists
+            of constructing a model solely from an input set. Essentially, given unlabeled data, the
+            objective in unsupervised learning is to find any hidden structures that may be present
+            in the data, and use those hidden structures to construct a classification or regression
+            model.
+
+        \subsection{Reinforcement Learning}\label{sec:rein}
+
+            Reinforcement learning functions in the following manner: model is presented with an
+            input space, and a function to calculate reward; however, in this case, there are no
+            explicit input-output pairs, and if the model begins to stray to a sub-optimal path,
+            there will be no outright correction of the digression. This method of learning is
+            preferred for on-line (streamed) learning, as a locked dataset is not required for
+            reinforcement learning. Instead, there must be a balance between exploration of new
+            knowledge and exploitation of old knowledge.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Algorithms}\label{sec:alg}
+
+        \subsection{$k$-NN}\label{subsec:knn}
+
+            $k$-nearest neighbors, commonly shortened as $k$-NN, is a popular machine learning
+            algorithm because of its relative simplicity to implement. It is non-parametric---
+            meaning it does not assume that the input data has any particular structure, making it
+            an ideal tool for ``testing'' the structure of a dataset and identifying any basic
+            patterns. This property also makes it perform well in unsupervised learning
+            (\ref{sec:unsup}).
+
+            When classifying an input $x_n$, for example, it takes the ``majority vote'' of the $k$
+            nearest neighbors to the input $x_n$ to determine the class of the input. 
+
+            \begin{equation}\label{eq:basic_knn}
+                x_{\theta}=\argmax_{\theta} \abs{k_{\theta} \in \{k^*\}}
+            \end{equation}
+
+            \noindent Equation \eqref{eq:basic_knn} demonstrates the ``majority vote'' method.
+            The class of an input vector $x$, represented here by $x_{\theta}$ is defined as the
+            class---$\theta$---for which the number of nearest neighbors $k_{\theta}$ in in all of
+            the possible nearest neighbors $\{k^*\}$ is maximized.
+
+            Variations of the algorithm also vary the ``weight'' of the vote with the inverse of
+            the distance. This helps counteract any bias incurred by skewed data; for example, if
+            a point were to have three neighbors, one very near and two very far, the ``weighted
+            vote'' would ideally have the nearer neighbor have more influence over the class of the
+            input vector than the further neighbors.
+
+            \begin{equation}\label{eq:weighted_knn}
+                x_{\theta}=\argmin_{\theta} \frac{\sum_n{\text{dist}^m(k_n \in \{k_{\theta}^*\})}}{\abs{k_{\theta} \in \{k^*\}}}
+            \end{equation}
+
+            \noindent Equation \eqref{eq:weighted_knn} demonstrates the ``weighted vote'' method.
+            The class of an input vector $x$, again represented by $x_{\theta}$, is defined by the
+            $\theta$ for which the sums of the distances between the $k$ nearest neighbors of class
+            $\theta$ divided by the cardinality of the set $k_{\theta} \in \{k^{*}\}$ is minimized.
+            Important to note is that the function $\text{dist}$ is taken to the power of $m$; the
+            weighting need not be inverse-linear: it could be inverse-square---arguably the most
+            popular, inverse-cubic, inverse-quartic, et cetera.
+
+        \subsection{Support Vector Machines}\label{subsec:svm}
+
+            Support vector machines are supervised learning models (\ref{sec:sup}) that are commonly
+            used for classification and regression tasks. With a linear kernel (which is all we
+            will go over, for the sake of simplicity), a support vector machine will fit a linear
+            model to separate a dataset of two classes (while more than two can be classified, it
+            requires extra computation).
+
+            A linear model for a support vector machine is as follows:
+
+            \begin{equation}\label{eq:hyperplane}
+                \omega \cdot x_i + b = y_i
+            \end{equation}
+
+            \noindent where $\omega$ is the matrix of weights, $x_i$ is the input vector, $b$ is the
+            bias, and $y_i$ is the class. The support vector machine finds the parameters $\omega$ and $b$ for the
+            hyperplane that separate the input dataset into two classes: $\{-1,1\}$. This is accomplished by
+            maximizing the distance to elements of either class on both sides of the hyperplane. Maximizing
+            the distance is accomplished with the aid of two solutions to the hyperplane defined in
+            equation \eqref{eq:hyperplane}:
+
+            \begin{equation}\label{eq:sepclass}
+                \begin{cases}
+                    \omega \cdot x_i + b \geq 1 & \quad \text{Class above line} \\
+                    \omega \cdot x_i + b \leq -1 & \quad \text{Class below line}
+                \end{cases}
+            \end{equation}
+
+            \noindent As $y_i$ is always either $-1$ or $1$, we can simplify this further:
+
+            \begin{equation}\label{eq:bothclass}
+                y_i(\omega \cdot x_i + b) \geq 1 \quad \forall i \in [1,n]
+            \end{equation}
+
+            \noindent Finally we can take the equations in \eqref{eq:sepclass} to derive our
+            objective function:
+
+            \begin{equation*}
+                \begin{cases}
+                    \omega \cdot x_i + b = 1 \\
+                    \omega \cdot x_j + b = -1
+                \end{cases}
+            \end{equation*}
+
+            \noindent What we are assuming here is that $x_i$ represents the element of class $1$
+            nearest to our line, and that $x_j$ represents the element of class $-1$ nearest to our
+            line.
+
+            \begin{equation*}
+                \omega \cdot (x_i-x_j) = 2
+            \end{equation*}
+
+            \begin{equation}\label{eq:protoobj}
+                (x_i-x_j)=\frac{2}{\mag{\omega}}
+            \end{equation}
+
+            \noindent Now, if we remember, we were trying to maximize the difference between the
+            elements of the respective classes $\{-1,1\}$ that were closest to our line; we can use
+            equation \eqref{eq:protoobj} to define our objective function with respect to $\omega$:
+
+            \begin{equation*}
+                argmax_{(i,j)} x_i-x_j
+            \end{equation*}
+
+            \begin{equation}\label{eq:obj}
+                \argmin_{\omega} \frac{2}{\mag{\omega}}
+            \end{equation}
+
+            \noindent With the objective function, we can now solve for $\omega$ by putting equation
+            \eqref{eq:obj} under the constraint of equation \eqref{eq:bothclass}, and solving for
+            the weights.
+
+        \subsection{Neural Network}\label{subsec:nnet}
+
+            Neural networks are arguably the most publicized of the machine learning algorithms,
+            likely due to their functionality. In essence, they function the same way a small brain
+            would, weighing inputs and providing an output based on a threshold function. Each
+            perceptron---the neural network's equivalent of a neuron---weighs one metric, and
+            passes on the value to the next perceptron.
+            \\[0.5cm]
+            \begin{tikzpicture}[shorten >=1pt,->,draw=black!50, node distance=2.5cm]
+                \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+                \tikzstyle{neuron}=[circle,fill=black!25,minimum size=17pt,inner sep=0pt]
+                \tikzstyle{input neuron}=[neuron, fill=green!50];
+                \tikzstyle{output neuron}=[neuron, fill=red!50];
+                \tikzstyle{hidden neuron}=[neuron, fill=blue!50];
+                \tikzstyle{annot} = [text width=4em, text centered]
+
+                \foreach \name / \y in {1,...,4}
+                    \node[input neuron, pin=left:$x_{\y}$] (I-\name) at (0,-\y) {};
+
+                \foreach \name / \y in {1,...,5}
+                    \path[yshift=0.5cm]
+                        node[hidden neuron] (H-\name) at (2.5cm,-\y cm) {};
+
+                \node[output neuron,pin={[pin edge={->}]right:Output}, right of=H-3] (O) {};
+
+                \foreach \source in {1,...,4}
+                    \foreach \dest in {1,...,5}
+                        \path (I-\source) edge (H-\dest);
+
+                \foreach \source in {1,...,5}
+                    \path (H-\source) edge (O);
+
+                \node[annot,above of=H-1, node distance=1cm] (hl) {Hidden layer};
+                \node[annot,left of=hl] {Input layer};
+                \node[annot,right of=hl] {Output layer};
+            \end{tikzpicture}
+            \\[0.5cm]
+            Neural networks are rather popular in practical use as well, mostly because they
+            are able to relatively accurately map unknown functions of multiple parameters.
+            Additionally, they are capable of learning with all three learning methods shown in
+            section (\ref{sec:learn}). This makes them a versatile tool in any data scientist's
+            toolbox.
+
+            Let us do the derivation for a simple single hidden layer perceptron network with
+            backpropagation. The first step is to determine an activation function; we will choose
+            the sigmoid function:
+
+            \begin{equation}\label{eq:act}
+                \varphi(x)=\frac{1}{1+e^x}
+            \end{equation}
+
+            \noindent Now that we have an activation function, we can define the system of equations
+            describing a neural network with one hidden layer:
+
+            \begin{equation}\label{eq:basicnnet}
+                \begin{cases}
+                    S_i(x)=\sum_n \varphi(\omega_{ni}x_n) & \quad \text{Input layer} \\
+                    S_j(x)=\sum_n \varphi(\omega_{nj}S_i(x)) & \quad \text{Hidden layer} \\
+                    S_k(x)=\omega_kS_j(x) & \quad \text{Output Layer (bias)}
+                \end{cases}
+            \end{equation}
+
+            \noindent From there, we can describe our error function:
+
+            \begin{equation}\label{eq:error}
+                E(x_i^*) = \sum_{x_i \in x_i^*} (S_k(x_i)-y_i)^2
+            \end{equation}
+
+            \noindent The error function described in equation \eqref{eq:error} can then be used to
+            update the individual weights
+
+            \begin{equation}\label{eq:update}
+                \begin{cases}
+                    \omega_i = \omega_i - \alpha\frac{\partial E}{\partial \omega_i} \\
+                    \omega_j = \omega_j - \alpha\frac{\partial E}{\partial \omega_j} \\
+                    \omega_k = \omega_k - \alpha\frac{\partial E}{\partial \omega_k}
+                \end{cases}
+            \end{equation}
+
+            \noindent where $\alpha \in (0,1]$, usually between $0.02$ and $0.05$, is used to
+            control the speed of the gradient descent.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Finance}
+
+        Machine learning---specifically, neural networks---are heavily used in the field of finance,
+        as they are exceedingly good at mapping unknown functions of multiple variables
+        (\ref{subsec:nnet}). A neural network could predict the rise and fall of certain stocks
+        given a large feature vector containing, say, the profit margin of a company, the national
+        inflation rate, the number of jobs created the previous quarter, et cetera.
+
+        Supercomputers are now used to calculate the trends in stocks on-line, given not only
+        quantitative data like that described in the paragraph above, but qualitative data gathered
+        from news sources like sentiment analyses or possible product launches, among others.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Health Care}
+
+        Machine learning in the health care sector is centred more around clustering; support vector
+        machines (\ref{subsec:svm}), decision trees (not derived), k-nearest neighbor
+        (\ref{subsec:knn}), and k-means (not derived) are some of the more popular algorithms in use
+        in the computational biology fields, specifically. With the advent of genome research,
+        scientists have to search for genetic anomalies that could be signs of future disease.
+        Clustering algorithms like k-NN are useful in this application because the computational
+        power required is not as demanding as an unsupervised neural network, while they are still
+        able to identify any important structures in the data.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Social Media}
+
+        Machine learning in social media is a trend that has developed fairly recently. The common
+        algorithms in use in social media---for the purpose of news displays, post displays, et
+        cetera---are neural networks, support vector machines, and the like. Algorithms that can
+        map complex functions implicitly are the preferred models in this application, as encoding,
+        say, a sentence with the proper information to make it useful for a computer requires a
+        rather large feature vector. Neural nets and support vector machines, while not the only
+        method of handling large feature dimensionality, are effective in simple implementations.
+
+%--------------------------------------------------------------------------------------------------%
+
+    \section{Conclusion}\label{sec:concl}
+
+        Hello, world!
+
+%--------------------------------------------------------------------------------------------------%
+
+    \nocite{*}
+    \printbibliography
+
+\end{document}
