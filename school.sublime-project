@@ -1,24 +1,2 @@
 {
-    "folders":
-    [
-        {
-            "path": ".",
-            "file_exclude_patterns":
-            [
-                "*.aux",
-                "*.bbl",
-                "*.bcf",
-                "*.blg",
-                "*.dvi",
-                "*.fdb_latexmk",
-                "*.html",
-                "*.log",
-                "*.out",
-                "*.run.xml",
-                "*.synctex.gz*",
-                "*.toc",
-                "*~"
-            ]
-        }
-    ]
 }
