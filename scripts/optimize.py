@@ -1,11 +1,13 @@
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import scipy.optimize as o
 from os.path import expanduser
 
-set = np.array([row for row in csv.reader(open(expanduser("~/git/school/2014-2015/Physics/Waves/foobar.csv")))][1:]).astype(np.float)
-fun = lambda k, x: k[0]*np.sqrt(k[1]*x+k[2])+k[3]
+set = pd.read_csv(expanduser("~/git/school/2015-2016/Physics/Spaghetti_Lab/data.dat"), index_col=0, sep="\s*").to_records()
+print set
+fun = lambda k, x: k[0]*(k[1]*x+k[2])**2+k[3]
 
 def err(k):
     return sum(((fun)(k, set[i][0]) - set[i][4])**2 for i in xrange(len(set)))
@@ -15,7 +17,7 @@ guess = [1., 1., 1., 1.]
 opt = o.minimize(err, guess, method="L-BFGS-B")["x"]
 
 x = [val[0] for val in [row for row in set]]
-y = [val[4] for val in [row for row in set]]
+y = [val[6] for val in [row for row in set]]
 z = np.arange(min(x), max(x), 0.00001)
 
 print opt

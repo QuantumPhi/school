@@ -119,3 +119,9 @@ build/
 *.html
 *.sublime-workspace
 *~
+
+## Supposed to be LFS
+*.cls
+*.csv
+*.dat
+*.png

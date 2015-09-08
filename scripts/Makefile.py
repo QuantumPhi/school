@@ -14,6 +14,13 @@ def match_files(id, dir, file):
                 match.append(os.path.join(root, filename))
     return match
 
+# TODO(): Create system that automatically generates new year
+# def new_year(args, ib=False):
+#     courses = ["Math", "English"] + args
+#     year = os.listdirs(".")
+#     for courses in courses:
+        
+
 def build(id):
     # Targets:
     #   Fuzzy file matching (GH: seatgeek/fuzzywuzzy)

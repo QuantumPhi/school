@@ -1,0 +1,248 @@
+\documentclass[a4paper]{article}
+
+\usepackage{amsmath, amssymb}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\def\mean#1{\left< #1 \right>}
+
+\title{Investigating the Fracturing of Raw Spaghetti}
+\date{1 September 2015}
+\author{Tarik Onalan}
+
+\begin{document}
+    \maketitle
+    \section{Introduction}
+        \subsection{Purpose}
+            To understand how the separation of the applied forces on the spaghetti affect
+            the length of the secondary fracture.
+        \subsection{Hypothesis/Prediction}
+            I predict that as the distance between the two forces decreases, the length of
+            the broken spaghetti pieces will decrease, as there will be less space for a
+            cascading fracture to take place.
+        \subsection{Variables}
+            \textbf{Independent Variable}
+            \begin{itemize}
+                \item Width between forces [\si\cm]
+            \end{itemize}
+            \textbf{Dependent Variables}
+            \begin{itemize}
+                \item Length of broken spaghetti pieces [\si\cm]
+            \end{itemize}
+            \textbf{Controlled Variables}
+            \begin{itemize}
+                \item Length of starting spaghetti [\SI{25.0}{\cm}]
+                \item Width of starting spaghetti [\SI{0.2}{\cm}]
+                \item Mass of starting spaghetti [\SI{5.4}{\g}]
+            \end{itemize}
+    \section{Materials}
+        \begin{itemize}
+            \item Spaghetti $\cdot 20$
+            \item Rotatable clamps $\cdot 2$
+            \item Ruler $\cdot 1$
+            \item Scale $\cdot 1$
+        \end{itemize}
+    \section{Procedure}
+        \begin{enumerate}
+            \item (CONTROL) Measure length of spaghetti
+            \item (CONTROL) Measure width of spaghetti
+            \item (CONTROL) Measure mass of spaghetti
+            \item Pick a spaghetti, check it is within margin of error (\SI{0.05}{\cm})
+            \item Measure distance between clamps (25, 20, 15, and \SI{10}{\cm})
+            \item Clamp spaghetti
+            \item Turn clamps at the same speed until spaghetti breaks
+            \item Measure length of broken spaghetti pieces, if any (else record \SI{0.0}{\cm})
+            \item Repeat steps 4-8 as necessary for data collection
+            \item Repeat step 9 with remaining distances
+        \end{enumerate}
+        \resizebox{\linewidth}{!}{
+            \includegraphics{./figure.png}
+        }
+    \section{Data}
+        \resizebox{\linewidth}{!}{
+            \pgfplotstabletypeset[
+                multicolumn names,
+                display columns/0/.style={
+                    column name=Separation,
+                    column type={S},string type},
+                display columns/1/.style={
+                    column name=Trial 1,
+                    column type={S},string type},
+                display columns/2/.style={
+                    column name=Trial 2,
+                    column type={S},string type},
+                display columns/3/.style={
+                    column name=Trial 3,
+                    column type={S}, string type},
+                display columns/4/.style={
+                    column name=Trial 4,
+                    column type={S}, string type},
+                display columns/5/.style={
+                    column name=Trial 5,
+                    column type={S}, string type},
+                display columns/6/.style={
+                    column name=Average,
+                    column type={S}, string type},
+                columns/t1/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                columns/t2/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                columns/t3/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                columns/t4/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                columns/t5/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                columns/avg/.append style={
+                    postproc cell content/.append style={
+                        /pgfplots/table/@cell content/.add={}{$\pm0.05$}
+                    }
+                },
+                every head row/.style={
+                    before row={\toprule},
+                    after row={
+                        \si\cm & \si\cm & \si\cm & \si\cm & \si\cm & \si\cm & \si\cm\\
+                        \midrule}
+                },
+                every last row/.style={after row=\bottomrule}
+            ]{data.dat}
+        }
+
+        \begin{tikzpicture}
+            \begin{axis}[
+                title={Length of Spaghetti Piece Relative to Breaking Force Separation},
+                scale=1.75,
+                xlabel={Separation [\si\cm]},
+                ylabel={Length [\si\cm]},
+                xmin=9.0, xmax=26.0,
+                ymin=0.0, ymax=3.0,
+                x dir=reverse,
+                legend pos=north east,
+                ymajorgrids=true,
+                grid style=dashed
+            ]
+                \addplot [
+                    color=blue,
+                    only marks
+                ] plot [
+                    error bars/.cd,
+                        x dir=both,
+                        y dir=both,
+                        x explicit,
+                        y explicit,
+                        x fixed=0.05,
+                        y fixed=0.05,
+                ] table [
+                    x=sep,
+                    y=avg,
+                ]{data.dat};
+
+                \addplot [thick, red] table [y={create col/linear regression={y=avg}}]{data.dat};
+
+                \draw (axis cs:24.95,2.45) -- (axis cs:10.05,-0.05);
+                \draw (axis cs:25.05,2.35) -- (axis cs:9.95,0.05);
+
+                \addlegendentry{Average}
+                \addlegendentry{$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x \pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$}
+            \end{axis}
+        \end{tikzpicture}
+    \section{Explanations}
+        \subsection{Uncertainty}
+            There are uncertainty bars for both $x$ and $y$ axes, though they are difficult
+            to see on the $x$ axis due to scaling issues. Uncertainty was assumed to be
+            \SI{0.05}{\cm}, as the ruler used could only measure within the nearest
+            \SI{0.1}{\cm}, meaning that the \SI{0.1}{\cm} region that was $50\%$ offset
+            from the ruler would be least certain.
+        \subsection{Intercepts}
+            There is only one intercept on the graph, and that is when, at a separation of
+            \SI{10.0}{\cm}, the spaghetti does not fracture into any extra pieces during any
+            of the five trials.
+        \subsection{Slope}
+            The slope is positive ($0.15$), meaning that as the width between the two clamps
+            increases, the length of the secondary broken spaghetti piece will also increase.
+    \section{Calculations}
+        \subsection{Average}
+            \begin{equation}
+                \mean{x_i^*}
+            \end{equation}
+            \begin{equation}
+                \frac{\displaystyle\sum_i{x_i}}{i}
+            \end{equation}
+            \begin{equation}
+                \frac{x_1+x_2+...+x_{i-1}+x_i}{i}
+            \end{equation}
+        \subsection{Error and Minimization for Line of Best Fit}
+            \centerline{Error was calculated using sum squared error, which is defined as follows:}
+            \begin{equation}
+                E=\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2}
+            \end{equation}
+            \begin{center}
+                While a program carried out the minimization of the function, the basic
+                premise of minimization is to ``follow the gradient,'' so to speak. The
+                program follows the gradient
+            \end{center}
+            \begin{equation}
+                E'=\frac{\partial}{\partial x}(\displaystyle\sum_{i=1}^n{(y_i-f(x_i))^2})
+            \end{equation}
+            \begin{center}
+                similar to Euler's method for solving differential equations. Minimizing
+                the function is simply following the ``negative'' slope to the local minima
+                of the function.
+            \end{center}
+    \section{Conclusion}
+        My hypothesis, that the length of the secondary break will shorten as the separation of
+        the applied forces on the spaghetti was reduced, was supported by the data. When the separation
+        was \SI{25.0}{\cm}, the secondary break averaged a length of \SI{2.4}{\cm}. At \SI{20.0}{\cm},
+        the average dropped to \SI{0.4}{\cm}. \SI{15.0}{\cm} had an average of \SI{0.2}{\cm}, and,
+        the smallest separation, \SI{10.0}{\cm}, produced an average of \SI{0.0}{\cm}, meaning that
+        no secondary pieces were produced from the breaking of the spaghetti through the five trials.
+        This makes sense, as when the distance between the two clamps was decreased, there was less
+        ``spaghetti'' available for a cascading fracture to take place. A cascading fracture, in this
+        case, is the secondary fracturing of the spaghetti due to regions (namely the centre region)
+        of the spaghetti straightening before other regions (like the bases). In regards to the data,
+        however, I believe there is too much random error at play to make an outright statement of the
+        validity of my hypothesis. Spaghetti has too much inherent randomness to make it a reliable
+        object of measurement. A spaghetti could have microscopic weaknesses that predispose it to
+        breaking from certain locations: perhaps another spaghetti was slightly more dense; it would
+        have been impossible to tell with my measuring devices. Additionally, as I was the one turning
+        the clamps, I was introducing error into the measurements; humans are not precise. However,
+        because the data shows such an overwhelming trend in support of my hypothesis, I believe I can
+        claim that my hypothesis is valid.
+
+        The design of the investigation was not incredible by any stretch of the mind, but given that
+        it was quite simple, the implementation, I believe, was up-to-par with the standards I had in
+        mind. That said, I was not impressed by the error accrued throughout the investigation. As I
+        said before, the spaghetti was a central source of randomness throughout the investigation.
+        A particular with my investigation, the clamps, also introduced randomness, but this was the
+        product of a compromise instead of ignorance. As I was investigating the secondary breakage
+        of spaghetti (around the centre), I wanted to make sure that I was avoiding contact with the
+        centre region of the spaghetti at the time of breakage. As a result, I had to resort to rotating
+        clamps as a compromise, as even though I still control their movement, I felt that they would
+        provide a more consistent torque than my hands would. The error introduced by both sources, in
+        the end, were mostly random; the results could essentially have gone either way.
+
+        One improvement that comes to mind is replacing the spaghetti with thin plastic sticks; the
+        material would be more uniform (mass, dimensions, elasticity), and would thus introduce less
+        random error into test results. However, this would undoubtedly be more expensive, so whether
+        or not it would be feasible is unknown.
+\end{document}

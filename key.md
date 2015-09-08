@@ -2,16 +2,23 @@
 |-----|-------|
 | `->` | to/is/in |
 | `~>` | of/from/through/by/with |
+| <code>&#124;></code> | because/for |
 | `+>` | therefore |
 | `=>` | changed to |
-| <code>&#124;></code> | because/for |
-| `!>` | instead/however/did not |
+| `!>` | instead/however/else |
 | `?>` | if/possibly |
 | `#>` | example |
-| `+` | increase/and |
-| `-` | decrease |
+| `+` | and |
+| `-` | or |
 | `=` | equals |
+| <code>&#124;</code> | `;` |
+| `+[]` | increase |
+| `-[]` | decrease |
 | `~[]` | approximately |
 | `![]` | not |
-| `?[]` | question |
-| `+?` | etc. |
+| `?[]` | `question` |
+| `<%[]` | before/early |
+| `%>[]` | after/late |
+| `[<=>]` | from `:` to |
+| `[]+?` | etc./multiple |
+| `{(<index> >)+? > <index>}` | `document reference` |
