@@ -1,12 +1,12 @@
 | Key | Value |
 |-----|-------|
-| `->` | to/is/in |
-| `~>` | of/from/through/by/with |
-| <code>&#124;></code> | because/for |
-| `+>` | therefore |
+| `->` | state |
+| `+>` | consequence |
+| `~>` | preposition |
+| <code>&#124;></code> | reason |
 | `=>` | changed to |
-| `!>` | instead/however/else |
-| `?>` | if/possibly |
+| `!>` | however |
+| `?>` | if |
 | `#>` | example |
 | `+` | and |
 | `-` | or |
@@ -16,9 +16,9 @@
 | `-[]` | decrease |
 | `~[]` | approximately |
 | `![]` | not |
-| `?[]` | `question` |
-| `<%[]` | before/early |
-| `%>[]` | after/late |
+| `?[]` | question |
+| `<%[]` | before |
+| `%>[]` | after |
 | `[<=>]` | from `:` to |
 | `[]+?` | etc./multiple |
-| `{(<index> >)+? > <index>}` | `document reference` |
+| `{(<index> >)+? > <index>}` | document reference |
