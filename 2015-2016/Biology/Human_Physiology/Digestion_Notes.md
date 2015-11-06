@@ -32,7 +32,7 @@ The gateway to the gut:
     * Lingual tonsils `{Tongue > 0}` `+`  palatine tonsils (`->` "tonsils") `+` adenoids
     * Palatine tonsils `->` "crypts" `!>` nodes `->` foreign material `->` infection
     * Tonsil stones `->` bad breath `->` tonsils
-    * Tonsillectomy: removal `~>` tonsils (`<%`[7])
+    * Tonsillectomy: removal `~>` tonsils (`<%`[age 7])
 
 The structure of the gut:
 

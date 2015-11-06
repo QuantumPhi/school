@@ -1,8 +1,8 @@
 | Key | Value |
 |-----|-------|
-| `->` | state |
+| `->` | preposition |
 | `+>` | consequence |
-| `~>` | preposition |
+| `~>` | state |
 | <code>&#124;></code> | reason |
 | `=>` | changed to |
 | `!>` | however |
@@ -15,6 +15,7 @@
 | `+[]` | increase |
 | `-[]` | decrease |
 | `~[]` | approximately |
+| `=[]` | equivalent |
 | `![]` | not |
 | `?[]` | question |
 | `<%[]` | before |
